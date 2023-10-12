@@ -13,3 +13,9 @@ def login(request):
 
 def register(request):
     return render(request, "auth/register.html")
+
+def doar(request):
+    return render(request, "home/doar.html")
+
+def apadrinhe(request):
+    return render(request, "home/apadrinhe.html")
