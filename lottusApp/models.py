@@ -10,7 +10,7 @@ class Children(models.Model):
     sobrenome = models.CharField(max_length=256)
     idade = models.IntegerField()
     data_nascimento = models.DateField()
-    padrinho = models.ForeignKey(User, on_delete=models.CASCADE)
+    padrinho = models.ForeignKey(User, on_delete=models.DO_NOTHING)
 
     def __str__(self):
         return self.nome
