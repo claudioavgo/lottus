@@ -124,5 +124,3 @@ env
 local_settings.py
 _local_settings.py
 gunicorn-error-log
-db.sqlite3
-db copy.sqlite3
