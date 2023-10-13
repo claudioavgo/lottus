@@ -1,44 +1,68 @@
+from django.http import HttpResponse, JsonResponse
 from django.contrib.auth import authenticate, login, logout
-from django.contrib.auth.models import User
-from django.http import HttpResponse
+from django.contrib.auth import login as auth_login
 from django.shortcuts import redirect, render
+from django.contrib.auth.models import User
 
 from .models import *
 
+from .utils import *
+
+def requer_autenticacao(f):
+    def dec(request, *args, **kwargs):
+        # Verifica session['logado']
+        if (request.user.is_authenticated):
+            username = request.user
+
+            usr = Perfil.objects.get(usuario=User.objects.get(username=username))
+            print(usr)
+        else:
+            usr = None
+
+        return f(request, user=usr, *args, **kwargs)
+    return dec
 
 # Página principal
-def home(request):
-    return render(request, "home/home.html")
+@requer_autenticacao
+def home(request, user):
+    context = {
+        'user': user,
+    }
+    return render(request, "home/home.html", context)
 
+@requer_autenticacao
+def dashboard(request, user):
+    context = {
+        'user': user,
+    }
+    return render(request, "dashboard/dash-home.html", context)
 
-def dashboard(request):
-    return render(request, "dashboard/dash-home.html")
+@requer_autenticacao
+def doar(request, user):
+    context = {
+        'user': user,
+    }
+    return render(request, "home/doar.html", context)
 
-
-def login(request):
-    return render(request, "auth/login.html")
+@requer_autenticacao
+def apadrinhe(request, user):
+    context = {
+        'user': user,
+    }
+    return render(request, "home/apadrinhe.html", context)
 
 
 def register(request):
-    return render(request, "auth/register.html")
-
-
-def doar(request):
-    return render(request, "home/doar.html")
-
-
-def apadrinhe(request):
-    return render(request, "home/apadrinhe.html")
-
-
-def registerPage(request):
     if request.method == "POST":
-        e = User.objects.filter(email=request.POST.get("email")).count()
-        if e == 0:
-            user = User.objects.create_user(email=request.POST.get(
-                "email"), username=request.POST.get("username"), password=request.POST.get("password"))
-            Perfil.objects.create(usuario=user, cpf=request.POST.get(
-                "cpf"), telefone=request.POST.get("telefone"))
+        if not UserController.existe(email=request.POST.get("email")):
+            user = UserController.cadastrar(
+                cpf=request.POST.get("cpf"), 
+                email=request.POST.get("email"),
+                name=request.POST.get("username"),
+                password=request.POST.get("password"),
+                phone=request.POST.get("telefone")
+            )
+
             login(request, user)
         else:
             print("Email já cadastrado")
@@ -47,26 +71,28 @@ def registerPage(request):
         return redirect("/")
     else:
         context = {"error": request.GET.get("error", 0)}
-        return render(request, 'register.html', context)
+        return render(request, 'auth/register.html', context)
 
 
 def loginPage(request):
     if request.method == "POST":
         try:
-            username = User.objects.get(
-                email=request.POST.get("email")).username
-            user = authenticate(request, username=username,
-                                password=request.POST.get("password"))
+            print(request.POST.get("email"))
+            username = UserController.existe(email=request.POST.get("email")).username
+            user = authenticate(request, username=username, password=request.POST.get("password"))
+
+            print(user)
 
             if (user):
                 login(request, user)
 
             return redirect("/")
-        except:
+        except Exception as e:
+            print(e)
             return redirect("/login?error=1")
     else:
         context = {"error": request.GET.get("error", 0)}
-        return render(request, 'login.html', context)
+        return render(request, 'auth/login.html', context)
 
 
 def logoutPage(request):

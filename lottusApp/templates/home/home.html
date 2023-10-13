@@ -31,20 +31,36 @@
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                            aria-expanded="false">
-                            Mais informações
-                        </a>
-                        <ul class="dropdown-menu">
+                        aria-expanded="false">
+                        Mais informações
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" target="_blank"
+                            href="https://github.com/claudioavgo/lottus">Nosso GitHub</a></li>
                             <li><a class="dropdown-item" target="_blank"
-                                    href="https://github.com/claudioavgo/lottus">Nosso GitHub</a></li>
-                            <li><a class="dropdown-item" target="_blank"
-                                    href="https://sites.google.com/cesar.school/lottus/in%C3%ADcio">O projeto</a></li>
-                        </ul>
-                    </li>
-                </ul>
+                                href="https://sites.google.com/cesar.school/lottus/in%C3%ADcio">O projeto</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/dashboard">Dashboard</a>
+                        </li>
+                    </ul>
                 <div>
+                    {% if not user %}
                     <a href="/login" class="btn btn-outline-dark">Login</a>
                     <a href="/cadastro" class="btn btn-outline-dark">Cadastre-se</a>
+                    {% else %}
+                    <li class="nav-item dropdown">
+                        <a class="avatar" href="#" data-bs-toggle="dropdown" aria-expanded="false">
+                            <span class="avatar text-bg-secondary">{{ user.nome.0 }}</span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="#">Configurações</a></li>
+                            <li><a class="dropdown-item" href="#">Perfil</a></li>
+                            <li><a class="dropdown-item" href="/logout">Sair</a></li>
+                        </ul>
+                    </li>
+                    {% endif %}
                 </div>
             </div>
         </div>
@@ -70,7 +86,8 @@
             <span class="visually-hidden">Next</span>
         </button>
     </div>
-      <div style="padding: 5rem 10rem 5rem 10rem; display: flex; justify-content: center; align-items: center; flex-direction: column;">
+    <div
+        style="padding: 5rem 10rem 5rem 10rem; display: flex; justify-content: center; align-items: center; flex-direction: column;">
         <div style="display: flex; justify-content: space-evenly; align-items: center; width: 20%;">
             <button class="btn btn-primary btn-lg" style="margin-top: 2rem;" type="submit">Faça uma doação</button>
             <button class="btn btn-primary btn-lg" style="margin-top: 2rem;" type="submit">Apadrinhar</button>
@@ -80,6 +97,7 @@
         </div>
     </div>
 </body>
-<script src="https://cdn.jsdelivr.net/npm/fastbootstrap@1.1.2/dist/js/fastbootstrap.min.js" integrity="sha256-+c+/OCMmtlZadi89VaV1yUOkk1T4BD2pwBFpY3OcrqI=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/fastbootstrap@1.1.2/dist/js/fastbootstrap.min.js"
+    integrity="sha256-+c+/OCMmtlZadi89VaV1yUOkk1T4BD2pwBFpY3OcrqI=" crossorigin="anonymous"></script>
 
 </html>

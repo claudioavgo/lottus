@@ -42,17 +42,23 @@
                         </ul>
                     </li>
                 </ul>
-                <li class="nav-item dropdown">
-                    <a class="avatar" href="#" data-bs-toggle="dropdown" aria-expanded="false">
-                        <span class="avatar avatar-sm text-bg-secondary">OP</span>
-                        <span class="avatar-badge border bg-green-300 p-1"></span>
-                    </a>
-                    <ul class="dropdown-menu dropdown-menu-end">
+                <div>
+                    {% if not user %}
+                    <a href="/login" class="btn btn-outline-dark">Login</a>
+                    <a href="/cadastro" class="btn btn-outline-dark">Cadastre-se</a>
+                    {% else %}
+                    <li class="nav-item dropdown">
+                      <a class="avatar" href="#" data-bs-toggle="dropdown" aria-expanded="false">
+                        <span class="avatar text-bg-secondary">{{ user.nome.0 }}</span>
+                      </a>
+                      <ul class="dropdown-menu dropdown-menu-end">
                         <li><a class="dropdown-item" href="#">Configurações</a></li>
                         <li><a class="dropdown-item" href="#">Perfil</a></li>
-                        <li><a class="dropdown-item" href="#">Sair</a></li>
-                    </ul>
-                </li>
+                        <li><a class="dropdown-item" href="/logout">Sair</a></li>
+                      </ul>
+                    </li>
+                    {% endif %}
+                  </div>
             </div>
         </div>
     </nav>

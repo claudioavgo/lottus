@@ -50,23 +50,24 @@
         </div>
     </nav>
 
-    <div style="padding: 5rem 10rem 5rem 10rem; display: flex; justify-content: center; align-items: center; flex-direction: column;">
-        <form>
+    <div style="padding: 3rem 10rem 5rem 10rem; display: flex; justify-content: center; align-items: center; flex-direction: column; width: 100%;">
+        <form method="post" action="/cadastro">
+            {% csrf_token %}
             <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Endereço de e-mail</label>
             <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
             </div>
             <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label">Nome</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
+            <label for="exampleInputPassword1" class="form-label">Nome completo</label>
+            <input name="username" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
             </div>
             <div class="mb-3">
             <label for="exampleInputPassword1" class="form-label">CPF</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
+            <input name="cpf" type="text" class="form-control" id="cpfInput" aria-describedby="emailHelp" />
             </div>
             <div class="mb-3">
             <label for="exampleInputPassword1" class="form-label">Telefone</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
+            <input name="telefone" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
             </div>
             <div class="mb-3">
             <label for="exampleInputPassword1" class="form-label">Senha</label>
@@ -74,7 +75,11 @@
             </div>
             <div class="mb-3">
             <label for="exampleInputPassword1" class="form-label">Confirmar senha</label>
-            <input type="password" class="form-control" id="exampleInputPassword1" />
+            <input name="password" type="password" class="form-control" id="exampleInputPassword1" />
+            </div>
+            <div class="mb-3 form-check">
+                <input type="checkbox" class="form-check-input" id="exampleCheck1" checked />
+                <label class="form-check-label" for="exampleCheck1">Concordo com a <a target="_blank" href="https://sites.google.com/cesar.school/lottus/in%C3%ADcio">finalidade do projeto</a>.</label>
             </div>
             <div class="text-end">
             <button type="submit" class="btn btn-subtle me-2">Cancelar</button>
@@ -84,6 +89,7 @@
     </div>
     
 </body>
+
 <script src="https://cdn.jsdelivr.net/npm/fastbootstrap@1.1.2/dist/js/fastbootstrap.min.js" integrity="sha256-+c+/OCMmtlZadi89VaV1yUOkk1T4BD2pwBFpY3OcrqI=" crossorigin="anonymous"></script>
 
 </html>
