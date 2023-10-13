@@ -41,9 +41,11 @@
                                 href="https://sites.google.com/cesar.school/lottus/in%C3%ADcio">O projeto</a></li>
                             </ul>
                         </li>
+                        {% if user %}
                         <li class="nav-item">
                             <a class="nav-link" href="/dashboard">Dashboard</a>
                         </li>
+                        {% endif %}
                     </ul>
                 <div>
                     {% if not user %}

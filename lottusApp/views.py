@@ -66,7 +66,7 @@ def register(request):
             login(request, user)
         else:
             print("Email já cadastrado")
-            return redirect("/register?error=1")
+            return redirect("/cadastro?error=1")
 
         return redirect("/")
     else:
@@ -80,8 +80,6 @@ def loginPage(request):
             print(request.POST.get("email"))
             username = UserController.existe(email=request.POST.get("email")).username
             user = authenticate(request, username=username, password=request.POST.get("password"))
-
-            print(user)
 
             if (user):
                 login(request, user)
