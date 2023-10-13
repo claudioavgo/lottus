@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Lottus</title>
+  <title>Cultive</title>
   <link href="https://cdn.jsdelivr.net/npm/fastbootstrap@1.1.2/dist/css/fastbootstrap.min.css" rel="stylesheet"
     integrity="sha256-xLGBU65wCDv2/qEdq3ZYw2Qdiia/wxxeGepRyZmpQdY=" crossorigin="anonymous" />
 </head>
@@ -12,7 +12,7 @@
 <body>
   <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">Lottus</a>
+      <a class="navbar-brand" href="/">Cultive</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -50,7 +50,7 @@
           {% else %}
           <li class="nav-item dropdown">
             <a class="avatar" href="#" data-bs-toggle="dropdown" aria-expanded="false">
-              <span class="avatar text-bg-secondary">{{ user.nome.0 }}</span>
+              <span class="avatar text-bg-secondary">{{ user.usuario.username.0 }}</span>
             </a>
             <ul class="dropdown-menu dropdown-menu-end">
               <li><a class="dropdown-item" href="#">Configurações</a></li>
