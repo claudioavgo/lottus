@@ -50,7 +50,7 @@ Instale as dependencias usando "pip install -r ./requirements.txt"
 <p><a href="https://github.com/">Brandon Hunt</a> - boh@cesar.school 📩</p>
 
 
-## SR1
+## Histórias SR1
 <p>Histórias criadas:</p>
 <p>1 - Eu como usuário doador, gostaria de realizar uma doação
 2 - Eu como usuário, gostaria de selecionar uma criança para apadrinhar
@@ -63,3 +63,6 @@ Instale as dependencias usando "pip install -r ./requirements.txt"
 <p>Histórias aplicadas:</p>
 <p>1 - Eu como usuário doador, gostaria de realizar uma doação
 2 - Eu como usuário, gostaria de selecionar uma criança para apadrinhar</p>
+
+## Link do diagrama de atividades SR1
+<p>https://discord.com/channels/1146135674039320606/1146221629530185839/1162114100244004884</p>
