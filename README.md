@@ -48,3 +48,18 @@ Instale as dependencias usando "pip install -r ./requirements.txt"
 <p><a href="https://github.com/lauravidall">Laura Vidal</a> - lbv2@cesar.school 📩</p>
 <p><a href="https://github.com/">Gabriel Ferraz</a> - gff@cesar.school 📩</p>
 <p><a href="https://github.com/">Brandon Hunt</a> - boh@cesar.school 📩</p>
+
+
+## SR1
+<p>Histórias criadas:</p>
+<p>1 - Eu como usuário doador, gostaria de realizar uma doação
+2 - Eu como usuário, gostaria de selecionar uma criança para apadrinhar
+3 - Eu como doadoe/padrinho, gostaria de ver onde a minha doação está sendo aplicada em prol das crianças e do espaço
+4 - Eu como administrador, gostaria de adicionar informações sobre o que ocorre no dia a dia das crianças e o que elas aprendem
+5 - Eu como administrador, gostaria de ter um espaço especial somente para a prestação de contas
+6 - Eu como administrador, gostaria de ter uma área para adicionar/atualizar o histório das crianças
+7 - Eu como futuro padrinho/doador, gostaria de saber e ver quais são as inciativas do gotas, para conhecer melhor a ONG
+8 - Eu como sendo usuário e dono de uma empresa querendo prestar o meu serviço ao gotas, gostaria de uma aba para saber no que posso ajudar, o que falta...</p>
+<p>Histórias aplicadas:</p>
+<p>1 - Eu como usuário doador, gostaria de realizar uma doação
+2 - Eu como usuário, gostaria de selecionar uma criança para apadrinhar</p>
