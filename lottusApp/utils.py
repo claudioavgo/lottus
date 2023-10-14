@@ -1,4 +1,4 @@
-from lottusApp.models import Perfil
+from lottusApp.models import *
 from django.contrib.auth.models import User
 from hashlib import sha256
 
@@ -17,3 +17,13 @@ class UserController:
             return usr
         else:
             return False
+
+def add_active(user, nome, desc, data):
+    try:
+        atv = Atividade.objects.create(nome=nome, desc=desc, data=data)
+        user.atividades.add(atv)
+        return True
+    except Exception as e:
+        print(e)
+        return False
+    

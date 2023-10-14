@@ -76,21 +76,45 @@
                                     <a class="menu-item" href="/dashboard/doacoes">Minhas doações</a>
                                 </li>
                                 <li>
-                                    <div class="menu-item">
-                                        <button class="accordion-button p-0 bg-transparent text-reset" type="button"
-                                            data-bs-toggle="collapse" aria-expanded="true"
-                                            data-bs-target="#submenu-1">Criança</button>
-                                    </div>
-                                    <div class="accordion-collapse collapse show" id="submenu-1">
-                                        <ul class="menu-list">
-                                            <li>
-                                                <a class="menu-item active" href="/dashboard/crianca">Guilherme Cardozo</a>
-                                            </li>
-                                        </ul>
-                                    </div>
+                                    {% if user.crianca and user.crianca_autorizada and not user.usuario.is_staff %}
+    
+                                        <div class="menu-item">
+                                            <button class="accordion-button p-0 bg-transparent text-reset" type="button"
+                                                data-bs-toggle="collapse" aria-expanded="true"
+                                                data-bs-target="#submenu-1">Criança</button>
+                                        </div>
+                                        <div class="accordion-collapse collapse show" id="submenu-1">
+                                            <ul class="menu-list">
+                                                
+                                                <li>
+                                                    <a class="menu-item" href="/dashboard/crianca">{{ user.crianca.nome }} {{user.crianca.sobrenome}}</a>
+                                                </li>
+                                                
+                                            </ul>
+                                        </div>
+    
+                                    {% else %}
+    
+                                        <div class="menu-item">
+                                            <button class="accordion-button p-0 bg-transparent text-reset" type="button"
+                                                data-bs-toggle="collapse" aria-expanded="true"
+                                                data-bs-target="#submenu-1">Crianças</button>
+                                        </div>
+                                        <div class="accordion-collapse collapse show" id="submenu-1">
+                                            <ul class="menu-list">
+                                                {% for i in more.criancas %}
+                                                <li>
+                                                    <a class="menu-item {% if crianca.nome == i.nome %} active {%endif%}" href="/dashboard/crianca/{{i.nome}}">{{ i.nome }} {{ i.sobrenome }}</a>
+                                                </li>
+                                                {% endfor %}
+                                            </ul>
+                                        </div>
+    
+                                    {% endif %}
                                 </li>
+                                {% if user.crianca %}
                                 <li>
-                                    <div class="menu-item">
+                                    <div class="menu-item ">
                                         <button class="accordion-button p-0 bg-transparent text-reset" type="button"
                                             data-bs-toggle="collapse" aria-expanded="true"
                                             data-bs-target="#submenu-2">Legal</button>
@@ -103,6 +127,7 @@
                                         </ul>
                                     </div>
                                 </li>
+                                {% endif %}
                             </ul>
                         </div>
                     </div>
@@ -119,13 +144,13 @@
                         <div class="well well-sm">
                             <div class="row">
                                 <div class="col-sm-4 col-md-4" style="padding-right: 3rem;">
-                                    <img src="https://avatars.githubusercontent.com/u/132563707?v=4" alt="" class="img-rounded img-responsive" style="max-width: 100%; height: auto;border-radius: 5px;" />
+                                    <img src="https://psfonttk.com/wp-content/uploads/2020/10/Ponto-de-interrogacao-copiar.png" alt="" class="img-rounded img-responsive" style="max-width: 100%; height: auto;border-radius: 5px;" />
                                 </div>
                                 <div class="col-sm-8 col-md-8">
-                                    <h4>{{ user.crianca.nome }} {{user.crianca.sobrenome}}</h4>
+                                    <h4>{{ crianca }} {{ crianca.sobrenome }}</h4>
                                     <small><cite title="San Francisco, USA">Xique Xique, BA <i class="glyphicon glyphicon-map-marker"></i></cite></small>
                                     <br />
-                                    <i class="glyphicon glyphicon-gift"></i>Junho 02, 2003</p>
+                                    <i class="glyphicon glyphicon-gift"></i>{{ crianca.data_nascimento }}</p>
                                     <div class="btn-group">
                                         <button type="button" class="btn btn-primary">Enviar presente</button>
                                     </div>
@@ -138,7 +163,7 @@
         </div>
         <div class="container">
             <!-- Atividade -->
-            {% for i in user.crianca.atividades.all %}
+            {% for i in crianca.atividades.all %}
             <div class="row">
                 <div class="col-xs-8 col-sm-5 col-md-9" style="margin-bottom: 2rem; margin-left: 15rem;">
                     <div class="gray-rectangle-activity">

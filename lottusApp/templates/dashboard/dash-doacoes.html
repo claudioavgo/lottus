@@ -1,4 +1,3 @@
-{% load static %}
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -8,7 +7,6 @@
     <title>Cultive</title>
     <link href="https://cdn.jsdelivr.net/npm/fastbootstrap@1.1.2/dist/css/fastbootstrap.min.css" rel="stylesheet"
         integrity="sha256-xLGBU65wCDv2/qEdq3ZYw2Qdiia/wxxeGepRyZmpQdY=" crossorigin="anonymous">
-    <link rel="stylesheet" href="{% static 'style.css' %}">
 </head>
 
 <body>
@@ -75,10 +73,10 @@
                     <div class="menu accordion">
                         <ul class="menu-list">
                             <li>
-                                <a class="menu-item active" href="/dashboard">Página Principal</a>
+                                <a class="menu-item" href="/dashboard">Página Principal</a>
                             </li>
                             <li>
-                                <a class="menu-item" href="/dashboard/doacoes">Minhas doações</a>
+                                <a class="menu-item active" href="/dashboard/doacoes">Minhas doações</a>
                             </li>
                             <li>
                                 {% if user.crianca and user.crianca_autorizada and not user.usuario.is_staff %}

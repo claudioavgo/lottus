@@ -10,7 +10,7 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary" style="position: fixed; width: 100%; z-index: 2;">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary" style="position: fixed; width: 100%; z-index: 2;background-color: white;">
         <div class="container-fluid">
             <a class="navbar-brand" href="/">Cultive</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -73,26 +73,47 @@
                     <div class="menu accordion">
                         <ul class="menu-list">
                             <li>
-                                <a class="menu-item" href="#">Página Principal</a>
+                                <a class="menu-item" href="/dashboard">Página Principal</a>
                             </li>
                             <li>
-                                <a class="menu-item" href="#">Minhas doações</a>
+                                <a class="menu-item" href="/dashboard/doacoes">Minhas doações</a>
                             </li>
                             <li>
-                                <div class="menu-item">
-                                    <button class="accordion-button p-0 bg-transparent text-reset" type="button"
-                                        data-bs-toggle="collapse" aria-expanded="true"
-                                        data-bs-target="#submenu-1">Criança</button>
-                                </div>
-                                <div class="accordion-collapse collapse show" id="submenu-1">
-                                    <ul class="menu-list">
-                                        {% if user.crianca and user.crianca_autorizada %}
-                                        <li>
-                                            <a class="menu-item" href="#">{{ user.crianca.nome }}</a>
-                                        </li>
-                                        {% endif %}
-                                    </ul>
-                                </div>
+                                {% if user.crianca and user.crianca_autorizada and not user.usuario.is_staff %}
+
+                                    <div class="menu-item">
+                                        <button class="accordion-button p-0 bg-transparent text-reset" type="button"
+                                            data-bs-toggle="collapse" aria-expanded="true"
+                                            data-bs-target="#submenu-1">Criança</button>
+                                    </div>
+                                    <div class="accordion-collapse collapse show" id="submenu-1">
+                                        <ul class="menu-list">
+                                            
+                                            <li>
+                                                <a class="menu-item" href="/dashboard/crianca">{{ user.crianca.nome }} {{user.crianca.sobrenome}}</a>
+                                            </li>
+                                            
+                                        </ul>
+                                    </div>
+
+                                {% else %}
+
+                                    <div class="menu-item">
+                                        <button class="accordion-button p-0 bg-transparent text-reset" type="button"
+                                            data-bs-toggle="collapse" aria-expanded="true"
+                                            data-bs-target="#submenu-1">Crianças</button>
+                                    </div>
+                                    <div class="accordion-collapse collapse show" id="submenu-1">
+                                        <ul class="menu-list">
+                                            {% for i in more.criancas %}
+                                            <li>
+                                                <a class="menu-item" href="/dashboard/crianca/{{i.nome}}">{{ i.nome }} {{ i.sobrenome }}</a>
+                                            </li>
+                                            {% endfor %}
+                                        </ul>
+                                    </div>
+
+                                {% endif %}
                             </li>
                             {% if user.crianca %}
                             <li>

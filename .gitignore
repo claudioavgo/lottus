@@ -1,10 +1,12 @@
 # Django #
+.gitignore
 *.log
 *.pot
 *.pyc
 __pycache__
 db.sqlite3
 media
+
 # Backup files #
 *.bak
 
@@ -116,9 +118,7 @@ GitHub.sublime-settings
 
 # Personal additions
 __pycache__/
-./__pycache__/
 *.pyc
-*.cpython-311.pyc
 __localcode
 venv
 env
@@ -126,3 +126,5 @@ env
 local_settings.py
 _local_settings.py
 gunicorn-error-log
+db.sqlite3
+db copy.sqlite3

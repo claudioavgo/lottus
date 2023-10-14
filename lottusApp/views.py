@@ -10,12 +10,10 @@ from .utils import *
 
 def requer_autenticacao(f):
     def dec(request, *args, **kwargs):
-        # Verifica session['logado']
         if (request.user.is_authenticated):
             username = request.user
 
             usr = Perfil.objects.get(usuario=User.objects.get(username=username))
-            print(usr)
         else:
             usr = None
 
@@ -31,25 +29,12 @@ def home(request, user):
     return render(request, "home/home.html", context)
 
 @requer_autenticacao
-def dashboard(request, user):
-    context = {
-        'user': user,
-    }
-    return render(request, "dashboard/dash-home.html", context)
-
-@requer_autenticacao
-def contrato(request, user):
-    context = {
-        'user': user,
-    }
-    return render(request, "dashboard/contract-page.html", context)
-
-@requer_autenticacao
 def doar(request, user):
     context = {
         'user': user,
     }
     return render(request, "home/doar.html", context)
+
 
 @requer_autenticacao
 def apadrinhe(request, user):
@@ -57,7 +42,6 @@ def apadrinhe(request, user):
         'user': user,
     }
     return render(request, "home/apadrinhe.html", context)
-
 
 def register(request):
     if request.method == "POST":
@@ -104,9 +88,46 @@ def logoutPage(request):
     logout(request)
     return redirect("/")
 
+# Páginas do dashboard
+
 @requer_autenticacao
 def dash_crianca(request, user):
     context = {
         'user': user,
+        'more':  {"criancas": Children.objects.all(), "usuarios": User.objects.all()} if user.usuario.is_staff else False,
     }
     return render(request, "dashboard/dash-children.html", context)
+
+@requer_autenticacao
+def dashboard(request, user):
+    context = {
+        'user': user,
+        'more':  {"criancas": Children.objects.all(), "usuarios": User.objects.all()} if user.usuario.is_staff else False,
+    }
+    return render(request, "dashboard/dash-home.html", context)
+
+@requer_autenticacao
+def contrato(request, user):
+    context = {
+        'user': user,
+        'more':  {"criancas": Children.objects.all(), "usuarios": User.objects.all()} if user.usuario.is_staff else False,
+    }
+    return render(request, "dashboard/contract-page.html", context)
+
+@requer_autenticacao
+def dash_doacoes(request, user):
+    context = {
+        'user': user,
+        'more':  {"criancas": Children.objects.all(), "usuarios": User.objects.all()} if user.usuario.is_staff else False,
+    }
+    return render(request, "dashboard/dash-doacoes.html", context)
+
+@requer_autenticacao
+def dash_specific_child(request, user, nome):
+    context = {
+        'user': user,
+        'more':  {"criancas": Children.objects.all(), "usuarios": User.objects.all()} if user.usuario.is_staff else False,
+        'crianca': Children.objects.filter(nome=nome).first()
+
+    }
+    return render(request, "dashboard/dash-specific-child.html", context)
