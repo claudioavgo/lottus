@@ -53,7 +53,7 @@ Instale as dependencias usando "pip install -r ./requirements.txt"
 ## Histórias SR1
 <p>Histórias criadas:</p>
 <p>1 - Eu como usuário doador, gostaria de realizar uma doação
-2 - Eu como usuário, gostaria de selecionar uma criança para apadrinhar
+2 - Eu como usuário, gostaria de apadrinhar uma criança
 3 - Eu como doadoe/padrinho, gostaria de ver onde a minha doação está sendo aplicada em prol das crianças e do espaço
 4 - Eu como administrador, gostaria de adicionar informações sobre o que ocorre no dia a dia das crianças e o que elas aprendem
 5 - Eu como administrador, gostaria de ter um espaço especial somente para a prestação de contas
