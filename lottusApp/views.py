@@ -96,3 +96,10 @@ def loginPage(request):
 def logoutPage(request):
     logout(request)
     return redirect("/")
+
+@requer_autenticacao
+def dash_crianca(request, user):
+    context = {
+        'user': user,
+    }
+    return render(request, "dashboard/dash-children.html", context)
