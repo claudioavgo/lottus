@@ -48,3 +48,24 @@ Instale as dependencias usando "pip install -r ./requirements.txt"
 <p><a href="https://github.com/lauravidall">Laura Vidal</a> - lbv2@cesar.school 📩</p>
 <p><a href="https://github.com/">Gabriel Ferraz</a> - gff@cesar.school 📩</p>
 <p><a href="https://github.com/">Brandon Hunt</a> - boh@cesar.school 📩</p>
+
+
+## Histórias SR1
+<p>Histórias criadas:</p>
+<p>1 - Eu como usuário doador, gostaria de realizar uma doação
+2 - Eu como usuário, gostaria de apadrinhar uma criança
+3 - Eu como doadoe/padrinho, gostaria de ver onde a minha doação está sendo aplicada em prol das crianças e do espaço
+4 - Eu como administrador, gostaria de adicionar informações sobre o que ocorre no dia a dia das crianças e o que elas aprendem
+5 - Eu como administrador, gostaria de ter um espaço especial somente para a prestação de contas
+6 - Eu como administrador, gostaria de ter uma área para adicionar/atualizar o histório das crianças
+7 - Eu como futuro padrinho/doador, gostaria de saber e ver quais são as inciativas do gotas, para conhecer melhor a ONG
+8 - Eu como sendo usuário e dono de uma empresa querendo prestar o meu serviço ao gotas, gostaria de uma aba para saber no que posso ajudar, o que falta...</p>
+<p>Histórias aplicadas:</p>
+<p>1 - Eu como usuário doador, gostaria de realizar uma doação
+2 - Eu como usuário, gostaria de selecionar uma criança para apadrinhar</p>
+
+## Link do diagrama de atividades SR1
+<p>https://miro.com/app/board/uXjVNbab1ho=/?share_link_id=648280110492</p>
+
+## Relato de programção em par SR1
+<p>Para desenvolvermos a aplicação web, utilizamos programação em par que foi essencial para o andamento do projeto. O grupo se subdividiu em 3 duplas, que foram elas: Cláudio Alves e Guilherme Cardozo, Laura Vidal e Gabriel Lima, Gabriel Ferraz e Brandon Hunt. A partir disso, cada dupla ficou focada em resolver certa parte do site, como por exemplo, a dupla Cláudio Alves e Guilherme Cardozo, ficaram responsáveis pelo Login e pelo Cadastro, juntamente com a home. Foi um consenso geral que a programação em par ajudou demais o andamento do grupo e o crescimento intelectual dos integrantes em desenvolvimento web e no trabalho em equipe, uma vez que, trabalhando em duplas, reduzindo o números de bugs e issues e havendo um aprendizado em conjunto.</p>

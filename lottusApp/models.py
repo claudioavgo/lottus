@@ -9,7 +9,7 @@ class Children(models.Model):
     sobrenome = models.CharField(max_length=256)
     idade = models.IntegerField()
     data_nascimento = models.DateField()
-    padrinho = models.ForeignKey(User, on_delete=models.DO_NOTHING)
+    padrinho = models.OneToOneField(User, on_delete=models.DO_NOTHING, blank=True, null=True)
 
     def __str__(self):
         return self.nome
@@ -18,8 +18,9 @@ class Children(models.Model):
 class Perfil(models.Model):
     cpf = models.CharField(max_length=14)
     telefone = models.CharField(max_length=50)
-    nome= models.CharField(max_length=256)
     usuario = models.OneToOneField(User, on_delete=models.CASCADE)
+    crianca = models.OneToOneField(Children, on_delete=models.DO_NOTHING, blank=True, null=True)
+    crianca_autorizada = models.BooleanField(default=False)
 
     def __str__(self):
         return self.usuario.username

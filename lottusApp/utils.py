@@ -5,9 +5,8 @@ from hashlib import sha256
 
 class UserController:
     def cadastrar(email, name, cpf, phone, password):
-        user = User.objects.create_user(username=sha256(str(name).encode("utf-8")).hexdigest(), password=password)
-        user.email = email
-        Perfil.objects.create(usuario=user, cpf=cpf, telefone=phone, nome=name)
+        user = User.objects.create_user(username=name, password=password, email=email)
+        Perfil.objects.create(usuario=user, cpf=cpf, telefone=phone, crianca=None, crianca_autorizada=False)
         print(user)
         return user
     

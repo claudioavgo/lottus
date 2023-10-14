@@ -38,6 +38,13 @@ def dashboard(request, user):
     return render(request, "dashboard/dash-home.html", context)
 
 @requer_autenticacao
+def contrato(request, user):
+    context = {
+        'user': user,
+    }
+    return render(request, "dashboard/contract-page.html", context)
+
+@requer_autenticacao
 def doar(request, user):
     context = {
         'user': user,

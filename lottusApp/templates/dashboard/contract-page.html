@@ -73,10 +73,10 @@
                     <div class="menu accordion">
                         <ul class="menu-list">
                             <li>
-                                <a class="menu-item" href="/dashboard">Página Principal</a>
+                                <a class="menu-item" href="#">Página Principal</a>
                             </li>
                             <li>
-                                <a class="menu-item active" href="/doacoes">Minhas doações</a>
+                                <a class="menu-item" href="#">Minhas doações</a>
                             </li>
                             <li>
                                 <div class="menu-item">
@@ -88,7 +88,7 @@
                                     <ul class="menu-list">
                                         {% if user.crianca and user.crianca_autorizada %}
                                         <li>
-                                            <a class="menu-item" href="/ver/{{  }}">{{ user.crianca.nome }}</a>
+                                            <a class="menu-item" href="#">{{ user.crianca.nome }}</a>
                                         </li>
                                         {% endif %}
                                     </ul>
@@ -96,7 +96,7 @@
                             </li>
                             {% if user.crianca %}
                             <li>
-                                <div class="menu-item">
+                                <div class="menu-item ">
                                     <button class="accordion-button p-0 bg-transparent text-reset" type="button"
                                         data-bs-toggle="collapse" aria-expanded="true"
                                         data-bs-target="#submenu-2">Legal</button>
@@ -104,7 +104,7 @@
                                 <div class="accordion-collapse collapse show" id="submenu-2">
                                     <ul class="menu-list">
                                         <li>
-                                            <a class="menu-item" href="/dashboard/contrato">Ver contrato</a>
+                                            <a class="menu-item active" href="/dashboard/contrato">Ver contrato</a>
                                         </li>
                                     </ul>
                                 </div>
