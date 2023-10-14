@@ -66,3 +66,6 @@ Instale as dependencias usando "pip install -r ./requirements.txt"
 
 ## Link do diagrama de atividades SR1
 <p>https://discord.com/channels/1146135674039320606/1146221629530185839/1162114100244004884</p>
+
+## Relato de programção em par SR1
+<p>Para desenvolvermos a aplicação web, utilizamos programação em par que foi essencial para o andamento do projeto. O grupo se subdividiu em 3 duplas, que foram elas: Cláudio Alves e Guilherme Cardozo, Laura Vidal e Gabriel Lima, Gabriel Ferraz e Brandon Hunt. A partir disso, cada dupla ficou focada em resolver certa parte do site, como por exemplo, a dupla Cláudio Alves e Guilherme Cardozo, ficaram responsáveis pelo Login e pelo Cadastro, juntamente com a home. Foi um consenso geral que a programação em par ajudou demais o andamento do grupo e o crescimento intelectual dos integrantes em desenvolvimento web e no trabalho em equipe, uma vez que, trabalhando em duplas, reduzindo o números de bugs e issues e havendo um aprendizado em conjunto.</p>
