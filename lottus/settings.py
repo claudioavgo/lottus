@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-n!16@)nu&74&0*(xqkvwcn8q@j2_^$+10n9ckuo#zu_3z!hb=!
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1','cultiveapp.azurewebsites.net']
 
 
 # Application definition

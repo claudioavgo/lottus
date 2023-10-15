@@ -51,9 +51,8 @@
 
     <div style="padding: 3rem 10rem 5rem 10rem; display: flex; justify-content: center; align-items: center; flex-direction: column; width: 100%;">
         <form method="post" action="/cadastro">
-
             {% csrf_token %}
-            
+
             <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Endereço de e-mail</label>
             <input name="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
