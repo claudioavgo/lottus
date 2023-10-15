@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
+import socket
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -23,7 +24,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-n!16@)nu&74&0*(xqkvwcn8q@j2_^$+10n9ckuo#zu_3z!hb=!'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True if '192' in str(socket.gethostbyname(socket.gethostname())) else False
+
+print(DEBUG)
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1','cultiveapp.azurewebsites.net']
 CSRF_TRUSTED_ORIGINS = ['https://*.azurewebsites.net','https://*.127.0.0.1', 'http://127.0.0.1']
