@@ -4,7 +4,7 @@
   <img src="https://img.shields.io/badge/Status-Em%20desenvolvimento-green?style=flat-square" alt="Status">
 </p>
 
-<p>Bem-vindo ao repositório da "Lottus":  🪷👨‍👩‍👧‍👦
+<p>Bem-vindo ao repositório da Lottus 🪷👨‍👩‍👧‍👦
 </p>
 
 
