@@ -1,3 +1,4 @@
 Django
 requests
 whitenoise
+psycopg2
