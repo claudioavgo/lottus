@@ -52,7 +52,8 @@ Instale as dependencias usando "pip install -r ./requirements.txt"
 
 ## Histórias SR1
 <p>Histórias criadas:</p>
-<p>1 - Eu como usuário doador, gostaria de realizar uma doação
+<p>
+1 - Eu como usuário doador, gostaria de realizar uma doação
 2 - Eu como usuário, gostaria de apadrinhar uma criança
 3 - Eu como doadoe/padrinho, gostaria de ver onde a minha doação está sendo aplicada em prol das crianças e do espaço
 4 - Eu como administrador, gostaria de adicionar informações sobre o que ocorre no dia a dia das crianças e o que elas aprendem
@@ -68,4 +69,4 @@ Instale as dependencias usando "pip install -r ./requirements.txt"
 ![image](https://github.com/claudioavgo/lottus/assets/132401057/2f1d53bf-075f-4b11-a8da-1330bf1c4d87)
 
 ## Relato de programção em par SR1
-<p>Para desenvolvermos a aplicação web, utilizamos programação em par que foi essencial para o andamento do projeto. O grupo se subdividiu em 3 duplas, que foram elas: Cláudio Alves e Guilherme Cardozo, Laura Vidal e Gabriel Lima, Gabriel Ferraz e Brandon Hunt. A partir disso, cada dupla ficou focada em resolver certa parte do site, como por exemplo, a dupla Cláudio Alves e Guilherme Cardozo, ficou responsável pelo Login e pelo Cadastro, juntamente com a home. Foi um consenso geral que a programação em par ajudou demais o andamento do grupo e o crescimento intelectual dos integrantes, em desenvolvimento web e no trabalho em equipe, uma vez que, trabalhando em duplas, reduziu-se o números de bugs e issues e havendo um aprendizado em conjunto.</p>
+<p>Para desenvolvermos a aplicação web, utilizamos programação em par que foi essencial para o andamento do projeto. O grupo se subdividiu em 3 duplas, que foram elas: Cláudio Alves e Guilherme Cardozo, Laura Vidal e Gabriel Lima, Gabriel Ferraz e Brandon Hunt. A partir disso, cada dupla ficou focada em resolver certa parte do site, como por exemplo, a dupla Cláudio Alves e Guilherme Cardozo, ficou responsável pelo Login e pelo Cadastro, juntamente com a home. Foi um consenso geral que a programação em par ajudou demais o andamento do grupo e o crescimento intelectual dos integrantes, em desenvolvimento web e no trabalho em equipe, uma vez que, trabalhando em duplas, reduziu-se o números de bugs e issues e houve um aprendizado em conjunto.</p>
