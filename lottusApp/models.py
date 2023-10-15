@@ -15,11 +15,11 @@ class Atividade(models.Model):
 class Children(models.Model):
     nome = models.CharField(max_length=256)
     sobrenome = models.CharField(max_length=256)
-    #foto_url = models.CharField(max_length=512, default=None, blank=True, null=True)
+    local = models.CharField(max_length=512, default="Sem informação")
     idade = models.IntegerField()
     data_nascimento = models.DateField()
     padrinho = models.OneToOneField(User, on_delete=models.DO_NOTHING, blank=True, null=True)
-    atividades = models.ManyToManyField(Atividade)
+    atividades = models.ManyToManyField(Atividade, default=None, blank=True)
 
     def __str__(self):
         return self.nome

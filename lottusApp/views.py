@@ -94,7 +94,7 @@ def logoutPage(request):
 def dash_crianca(request, user):
     context = {
         'user': user,
-        'more':  {"criancas": Children.objects.all(), "usuarios": User.objects.all()} if user.usuario.is_staff else False,
+        'more':  {"criancas": Children.objects.all(), "usuarios": Perfil.objects.all()} if user.usuario.is_staff else False,
     }
     return render(request, "dashboard/dash-children.html", context)
 
@@ -102,7 +102,7 @@ def dash_crianca(request, user):
 def dashboard(request, user):
     context = {
         'user': user,
-        'more':  {"criancas": Children.objects.all(), "usuarios": User.objects.all()} if user.usuario.is_staff else False,
+        'more':  {"criancas": Children.objects.all(), "usuarios": Perfil.objects.all()} if user.usuario.is_staff else False,
     }
     return render(request, "dashboard/dash-home.html", context)
 
@@ -110,7 +110,7 @@ def dashboard(request, user):
 def contrato(request, user):
     context = {
         'user': user,
-        'more':  {"criancas": Children.objects.all(), "usuarios": User.objects.all()} if user.usuario.is_staff else False,
+        'more':  {"criancas": Children.objects.all(), "usuarios": Perfil.objects.all()} if user.usuario.is_staff else False,
     }
     return render(request, "dashboard/contract-page.html", context)
 
@@ -118,7 +118,7 @@ def contrato(request, user):
 def dash_doacoes(request, user):
     context = {
         'user': user,
-        'more':  {"criancas": Children.objects.all(), "usuarios": User.objects.all()} if user.usuario.is_staff else False,
+        'more':  {"criancas": Children.objects.all(), "usuarios": Perfil.objects.all()} if user.usuario.is_staff else False,
     }
     return render(request, "dashboard/dash-doacoes.html", context)
 
@@ -126,8 +126,24 @@ def dash_doacoes(request, user):
 def dash_specific_child(request, user, nome):
     context = {
         'user': user,
-        'more':  {"criancas": Children.objects.all(), "usuarios": User.objects.all()} if user.usuario.is_staff else False,
+        'more':  {"criancas": Children.objects.all(), "usuarios": Perfil.objects.all()} if user.usuario.is_staff else False,
         'crianca': Children.objects.filter(nome=nome).first()
 
     }
     return render(request, "dashboard/dash-specific-child.html", context)
+
+@requer_autenticacao
+def dash_specific_user(request, user, nome):
+    usr = User.objects.filter(username=nome).first()
+    usr_perfil = None
+
+    for i in Perfil.objects.all():
+        if i.usuario == usr:
+            usr_perfil = i
+
+    context = {
+        'user': user,
+        'more':  {"criancas": Children.objects.all(), "usuarios": Perfil.objects.all()} if user.usuario.is_staff else False,
+        'user': usr_perfil
+    }
+    return render(request, "dashboard/dash-specific-user.html", context)

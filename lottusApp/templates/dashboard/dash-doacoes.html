@@ -73,10 +73,10 @@
                     <div class="menu accordion">
                         <ul class="menu-list">
                             <li>
-                                <a class="menu-item" href="/dashboard">Página Principal</a>
+                                <a class="menu-item active" href="/dashboard">Página Principal</a>
                             </li>
                             <li>
-                                <a class="menu-item active" href="/dashboard/doacoes">Minhas doações</a>
+                                <a class="menu-item" href="/dashboard/doacoes">Minhas doações</a>
                             </li>
                             <li>
                                 {% if user.crianca and user.crianca_autorizada and not user.usuario.is_staff %}
@@ -110,9 +110,26 @@
                                                 <a class="menu-item" href="/dashboard/crianca/{{i.nome}}">{{ i.nome }} {{ i.sobrenome }}</a>
                                             </li>
                                             {% endfor %}
+                                            <li>
+                                                <a style="background-color: rgb(0, 101, 255);font-weight: 500;color: white;" class="menu-item" href="/dashboard/adicionar/crianca">Adicionar</a>
+                                            </li>
                                         </ul>
                                     </div>
 
+                                    <div class="menu-item">
+                                        <button class="accordion-button p-0 bg-transparent text-reset" type="button"
+                                            data-bs-toggle="collapse" aria-expanded="true"
+                                            data-bs-target="#submenu-5">Usuários</button>
+                                    </div>
+                                    <div class="accordion-collapse collapse show" id="submenu-5">
+                                        <ul class="menu-list">
+                                            {% for i in more.usuarios %}
+                                            <li>
+                                                <a class="menu-item" href="/dashboard/user/{{ i.usuario.username }}">{{ i.usuario.username }}</a>
+                                            </li>
+                                            {% endfor %}
+                                        </ul>
+                                    </div>
                                 {% endif %}
                             </li>
                             {% if user.crianca %}

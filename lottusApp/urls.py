@@ -11,7 +11,8 @@ urlpatterns = [
     path("apadrinhe", views.apadrinhe, name="apadrinhe"),
     path("dashboard", views.dashboard, name="dashboard"),
     path("dashboard/crianca", views.dash_crianca, name="dash_crianca"),
-    path("dashboard/crianca/<str:nome>", views.dash_specific_child, name="dash_crianca"),
     path("dashboard/doacoes", views.dash_doacoes, name="dash_doacoes"),
     path("dashboard/contrato", views.contrato, name="contrato"),
+    path("dashboard/user/<str:nome>", views.dash_specific_user, name="dash_crianca"),
+    path("dashboard/crianca/<str:nome>", views.dash_specific_child, name="dash_crianca"),
 ]
