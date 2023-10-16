@@ -210,12 +210,13 @@ def dash_random_child(request, user):
 
     choosed_child = random.choice(criancas)
 
-    print(user)
+    crianca = Children.objects.filter(nome=str(choosed_child)).first()
+    crianca.padrinho = user.usuario
+
+    crianca.save()
 
     user.crianca = choosed_child
     user.save()
-
-    print(user.crianca)
 
     return redirect(f"/dashboard/contrato")
 
