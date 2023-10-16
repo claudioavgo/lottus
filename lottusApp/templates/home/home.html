@@ -48,9 +48,9 @@
                         {% endif %}
                     </ul>
                 <div>
-                    {% if not user %}
-                    <a href="/login" class="btn btn-outline-dark">Login</a>
-                    <a href="/cadastro" class="btn btn-outline-dark">Cadastre-se</a>
+                    {% if user %}
+                        <a href="/login" class="btn btn-outline-dark">Login</a>
+                        <a href="/cadastro" class="btn btn-outline-dark">Cadastre-se</a>
                     {% else %}
                     <li class="nav-item dropdown">
                         <a class="avatar" href="#" data-bs-toggle="dropdown" aria-expanded="false">
