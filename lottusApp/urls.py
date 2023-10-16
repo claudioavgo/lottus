@@ -15,4 +15,8 @@ urlpatterns = [
     path("dashboard/contrato", views.contrato, name="contrato"),
     path("dashboard/user/<str:nome>", views.dash_specific_user, name="dash_crianca"),
     path("dashboard/crianca/<str:nome>", views.dash_specific_child, name="dash_crianca"),
+    path("dashboard/adicionar/crianca", views.dash_add_child, name="dash_add_child"),
+    path("dashboard/adicionar/atividade", views.dash_add_activity, name="dash_add_activity"),
+    path("dashboard/apadrinhar", views.dash_random_child, name="dash_random_child"),
+    path("dashboard/aprovar/contrato/<str:crianca>", views.dash_aprovar_contrato, name="dash_aprovar_contrato"),
 ]

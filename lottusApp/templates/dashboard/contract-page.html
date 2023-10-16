@@ -73,7 +73,7 @@
                     <div class="menu accordion">
                         <ul class="menu-list">
                             <li>
-                                <a class="menu-item active" href="/dashboard">Página Principal</a>
+                                <a class="menu-item" href="/dashboard">Página Principal</a>
                             </li>
                             <li>
                                 <a class="menu-item" href="/dashboard/doacoes">Minhas doações</a>
@@ -96,7 +96,7 @@
                                         </ul>
                                     </div>
 
-                                {% else %}
+                                {% elif user.usuario.is_staff %}
 
                                     <div class="menu-item">
                                         <button class="accordion-button p-0 bg-transparent text-reset" type="button"
@@ -134,7 +134,7 @@
                             </li>
                             {% if user.crianca %}
                             <li>
-                                <div class="menu-item ">
+                                <div class="menu-item">
                                     <button class="accordion-button p-0 bg-transparent text-reset" type="button"
                                         data-bs-toggle="collapse" aria-expanded="true"
                                         data-bs-target="#submenu-2">Legal</button>
@@ -142,7 +142,7 @@
                                 <div class="accordion-collapse collapse show" id="submenu-2">
                                     <ul class="menu-list">
                                         <li>
-                                            <a class="menu-item " href="/dashboard/contrato">Ver contrato</a>
+                                            <a class="menu-item active" href="/dashboard/contrato">Ver contrato</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -157,6 +157,21 @@
             </div>
         </div>
     </div>
+
+    <div class="list-group" style="padding: 5rem 15rem 0rem 17rem; width: 100%;">
+        {% if not user.crianca_autorizada %}
+        <h3>Contrato</h3>
+        <p>O seu contrato ficará disponível em breve aqui.</p>
+        <br>
+        <h4>Nossa equipe já está com sua solicitação e irá realizar todas as verificações.</h4>
+        {% else %}
+        <h3>Contrato</h3>
+        <p>O seu contrato foi aceito com sucesso.</p>
+        <br>
+        <h4>Em breve irá aparecer mais informações aqui.</h4>
+        {% endif %}
+    </div>
+
 </body>
 <script src="https://cdn.jsdelivr.net/npm/fastbootstrap@1.1.2/dist/js/fastbootstrap.min.js"
     integrity="sha256-+c+/OCMmtlZadi89VaV1yUOkk1T4BD2pwBFpY3OcrqI=" crossorigin="anonymous"></script>

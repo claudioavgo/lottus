@@ -70,7 +70,7 @@
                         <div class="menu accordion">
                             <ul class="menu-list">
                                 <li>
-                                    <a class="menu-item active" href="/dashboard">Página Principal</a>
+                                    <a class="menu-item" href="/dashboard">Página Principal</a>
                                 </li>
                                 <li>
                                     <a class="menu-item" href="/dashboard/doacoes">Minhas doações</a>
@@ -122,7 +122,7 @@
                                             <ul class="menu-list">
                                                 {% for i in more.usuarios %}
                                                 <li>
-                                                    <a class="menu-item" href="/dashboard/user/{{ i.usuario.username }}">{{ i.usuario.username }}</a>
+                                                    <a class="menu-item {% if i.usuario.username == user.usuario.username %}active{% endif %}" href="/dashboard/user/{{ i.usuario.username }}">{{ i.usuario.username }}</a>
                                                 </li>
                                                 {% endfor %}
                                             </ul>

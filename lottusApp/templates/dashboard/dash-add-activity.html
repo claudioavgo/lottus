@@ -70,7 +70,7 @@
                         <div class="menu accordion">
                             <ul class="menu-list">
                                 <li>
-                                    <a class="menu-item" href="/dashboard">Página Principal</a>
+                                    <a class="menu-item active" href="/dashboard">Página Principal</a>
                                 </li>
                                 <li>
                                     <a class="menu-item" href="/dashboard/doacoes">Minhas doações</a>
@@ -104,7 +104,7 @@
                                             <ul class="menu-list">
                                                 {% for i in more.criancas %}
                                                 <li>
-                                                    <a class="menu-item {% if i.nome == crianca.nome %}active{% endif %}" href="/dashboard/crianca/{{i.nome}}">{{ i.nome }} {{ i.sobrenome }}</a>
+                                                    <a class="menu-item" href="/dashboard/crianca/{{i.nome}}">{{ i.nome }} {{ i.sobrenome }}</a>
                                                 </li>
                                                 {% endfor %}
                                                 <li>
@@ -157,56 +157,30 @@
         <div class="container" style="margin-bottom: 3rem;">
             <div class="row">
                 <div class="col-xs-12 col-sm-6 col-md-6" style="margin-top: 6rem; margin-left: 15rem;">
-                    <div class="gray-rectangle">
-                        <div class="well well-sm">
-                            <div class="row">
-                                <div class="col-sm-4 col-md-4" style="padding-right: 3rem;">
-                                    <img src="https://psfonttk.com/wp-content/uploads/2020/10/Ponto-de-interrogacao-copiar.png" alt="" class="img-rounded img-responsive" style="max-width: 100%; height: auto;border-radius: 5px;" />
-                                </div>
-                                <div class="col-sm-8 col-md-8">
-                                    <h4>{{ crianca }} {{ crianca.sobrenome }}</h4>
-                                    <small><cite title="San Francisco, USA">{{ crianca.local }}<i class="glyphicon glyphicon-map-marker"></i></cite></small>
-                                    <br />
-                                    <i class="glyphicon glyphicon-gift"></i>{{ crianca.data_nascimento }}</p>
-                                    <div class="btn-group">
-                                        <a href="/dashboard/adicionar/atividade?crianca={{ crianca }}" style="margin-right: 1rem;">
-                                            <button type="button" class="btn btn-primary">Adicionar atividade</button>
-                                        </a>
-                                        {% if crianca.padrinho and not padrinho.crianca_autorizada %}
-                                        <a href="/dashboard/aprovar/contrato/{{ crianca }}">
-                                            <button type="button" class="btn btn-primary">Aprovar contrato</button>
-                                        </a>
-                                        {% endif %}
-                                    </div>
-                                </div>
-                            </div>
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="row mb-3">
+                          <label for="inputEmail3" class="col-sm-2 col-form-label">Nome da atividade</label>
+                          <div class="col-sm-10">
+                            <input name="nome" type="text" class="form-control" id="inputEmail3">
+                          </div>
                         </div>
-                    </div>
+                        <div class="row mb-3">
+                          <label for="inputPassword3" class="col-sm-2 col-form-label">Data da atividade</label>
+                          <div class="col-sm-10">
+                            <input name="data" type="date" class="form-control" id="inputPassword3">
+                          </div>
+                        </div>
+                        <div class="row mb-3">
+                          <label for="inputPassword3" class="col-sm-2 col-form-label">Descrição</label>
+                          <div class="col-sm-10">
+                            <input name="desc" type="text" class="form-control" id="inputPassword3">
+                          </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Sign in</button>
+                      </form>
                 </div>
             </div>
-        </div>
-        <div class="container">
-            <!-- Atividade -->
-            {% for i in crianca.atividades.all %}
-            <div class="row">
-                <div class="col-xs-8 col-sm-5 col-md-9" style="margin-bottom: 2rem; margin-left: 15rem;">
-                    <div class="gray-rectangle-activity">
-                        <div class="well well-sm">
-                            <div class="row align-items-center">
-                                <div class="col-sm-8 col-md-8">
-                                    <h4>{{ i }}</h4>
-                                    <small><cite title="San Francisco, USA">{{ i.data }} <i class="glyphicon glyphicon-map-marker"></i></cite></small>
-                                    <p>{{ i.desc }}</p>
-                                    <div class="btn-group">
-                                        <button type="button" class="btn btn-primary">Compartilhar</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            {% endfor %}
         </div>
     </body>
     <style>

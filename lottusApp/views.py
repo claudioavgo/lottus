@@ -3,6 +3,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth import login as auth_login
 from django.shortcuts import redirect, render
 from django.contrib.auth.models import User
+import random
 
 from .models import *
 
@@ -116,18 +117,26 @@ def contrato(request, user):
 
 @requer_autenticacao
 def dash_doacoes(request, user):
-    context = {
-        'user': user,
-        'more':  {"criancas": Children.objects.all(), "usuarios": Perfil.objects.all()} if user.usuario.is_staff else False,
-    }
-    return render(request, "dashboard/dash-doacoes.html", context)
+    if request.method == "POST":
+        valor = request.POST.get("valor")
+        doa = Doacao.objects.create(valor=float(valor), desc="a")
+        user.doacoes.add(doa)
+        return redirect("/dashboard/doacoes")
+    else:
+        context = {
+            'user': user,
+            'more':  {"criancas": Children.objects.all(), "usuarios": Perfil.objects.all()} if user.usuario.is_staff else False,
+        }
+        return render(request, "dashboard/dash-doacoes.html", context)
 
 @requer_autenticacao
 def dash_specific_child(request, user, nome):
+    crianca = Children.objects.filter(nome=nome).first()
     context = {
         'user': user,
         'more':  {"criancas": Children.objects.all(), "usuarios": Perfil.objects.all()} if user.usuario.is_staff else False,
-        'crianca': Children.objects.filter(nome=nome).first()
+        'crianca': crianca,
+        'padrinho': Perfil.objects.filter(usuario=crianca.padrinho).first()
 
     }
     return render(request, "dashboard/dash-specific-child.html", context)
@@ -147,3 +156,75 @@ def dash_specific_user(request, user, nome):
         'user': usr_perfil
     }
     return render(request, "dashboard/dash-specific-user.html", context)
+
+@requer_autenticacao
+def dash_add_child(request, user):
+    if request.method == "POST":
+        nome = request.POST.get("nome")
+        sobrenome = request.POST.get("sobrenome")
+        local = request.POST.get("local")
+        idade = request.POST.get("idade")
+        data_nascimento = request.POST.get("data")
+
+        Children.objects.create(nome=nome, sobrenome=sobrenome, local=local, idade=idade, data_nascimento=data_nascimento)
+
+        return redirect("/dashboard/adicionar/crianca")
+    else:
+        context = {
+            'user': user,
+            'more':  {"criancas": Children.objects.all(), "usuarios": Perfil.objects.all()} if user.usuario.is_staff else False,
+        }
+        return render(request, "dashboard/dash-add-child.html", context)
+    
+@requer_autenticacao
+def dash_add_activity(request, user):
+    if request.method == "POST":
+        nome = request.POST.get("nome")
+        data = request.POST.get("data")
+        desc = request.POST.get("desc")
+        crianca_nome = request.GET.get('crianca')
+
+        atv = Atividade.objects.create(nome=nome, desc=desc, data=data)
+        
+        ch = Children.objects.filter(nome=crianca_nome).first()
+
+        ch.atividades.add(atv)
+
+        return redirect(f"/dashboard/crianca/{ch}")
+    else:
+        context = {
+            'user': user,
+            'more':  {"criancas": Children.objects.all(), "usuarios": Perfil.objects.all()} if user.usuario.is_staff else False,
+        }
+        return render(request, "dashboard/dash-add-activity.html", context)
+
+@requer_autenticacao
+def dash_random_child(request, user):
+    if not user:
+        return redirect(f"/cadastro")
+    
+    if user.crianca:
+        return redirect(f"/dashboard")
+    
+    criancas = Children.objects.all()
+
+    choosed_child = random.choice(criancas)
+
+    print(user)
+
+    user.crianca = choosed_child
+    user.save()
+
+    print(user.crianca)
+
+    return redirect(f"/dashboard/contrato")
+
+@requer_autenticacao
+def dash_aprovar_contrato(request, user, crianca):
+    ch = Children.objects.filter(nome=crianca).first()
+    padrinho = Perfil.objects.filter(usuario=ch.padrinho).first()
+
+    padrinho.crianca_autorizada = True
+    padrinho.save()
+
+    return redirect(f"/dashboard/crianca/{crianca}")

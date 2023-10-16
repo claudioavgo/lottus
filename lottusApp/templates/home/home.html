@@ -48,7 +48,7 @@
                         {% endif %}
                     </ul>
                 <div>
-                    {% if user %}
+                    {% if not user %}
                         <a href="/login" class="btn btn-outline-dark">Login</a>
                         <a href="/cadastro" class="btn btn-outline-dark">Cadastre-se</a>
                     {% else %}
@@ -90,9 +90,13 @@
     </div>
     <div
         style="padding: 5rem 10rem 5rem 10rem; display: flex; justify-content: center; align-items: center; flex-direction: column;">
-        <div style="display: flex; justify-content: space-evenly; align-items: center; width: 30%;">
-            <button class="btn btn-primary btn-lg" style="margin-top: 2rem;" type="submit">Faça uma doação</button>
-            <button class="btn btn-primary btn-lg" style="margin-top: 2rem;" type="submit">Apadrinhar</button>
+        <div style="display: flex; justify-content: space-evenly; align-items: center; width: 50%;">
+            <a href="/doar" style="margin-right: 1rem;">
+                <button class="btn btn-primary btn-lg" style="margin-top: 2rem;" type="submit">Faça uma doação</button>
+            </a>
+            <a href="/apadrinhe">
+                <button class="btn btn-primary btn-lg" style="margin-top: 2rem;" type="submit">Apadrinhe uma criança</button>
+            </a>
         </div>
         <div style=" text-align: center;">
             <h4><br>11 5093-0883<br>11 98879-2324<br>gotasdeflor@gotasdeflor.org.br</h4>

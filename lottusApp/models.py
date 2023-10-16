@@ -15,11 +15,11 @@ class Atividade(models.Model):
     
 class Doacao(models.Model):
     valor = models.FloatField()
-    data = models.DateField()
+    #data = models.DateField()
     desc = models.TextField()
 
     def __str__(self):
-        return self.valor
+        return self.desc
 
 class Children(models.Model):
     nome = models.CharField(max_length=256)
