@@ -38,9 +38,11 @@
               <li><a class="dropdown-item" target="_blank"
                   href="https://sites.google.com/cesar.school/lottus/in%C3%ADcio">O projeto</a></li>
             </ul>
-          <li class="nav-item">
-            <a class="nav-link" href="/dashboard">Dashboard</a>
-          </li>
+            {% if not user %}
+            <li class="nav-item">
+                <a class="nav-link" href="/dashboard">Dashboard</a>
+            </li>
+            {% endif %}
           </li>
         </ul>
         <div>
