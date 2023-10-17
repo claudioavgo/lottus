@@ -64,8 +64,10 @@ Instale as dependencias usando "pip install -r ./requirements.txt"
 <p>Histórias aplicadas:</p>
 <p>1 - Eu como usuário doador, gostaria de realizar uma doação
 2 - Eu como usuário, gostaria de selecionar uma criança para apadrinhar</p>
-## Screencast 
-[![videos](https://i.ibb.co/RTfw26X/Captura-de-tela-2023-10-16-233923.jpg)](https://youtu.be/BnFIN1o5-ig)
+ <h2>Screencast</h2>
+<a href="https://youtu.be/BnFIN1o5-ig">
+  <img src="https://i.ibb.co/RTfw26X/Captura-de-tela-2023-10-16-233923.jpg"/>
+</a> 
 
 ## Diagrama de atividades SR1
 ![image](https://github.com/claudioavgo/lottus/assets/132401057/2f1d53bf-075f-4b11-a8da-1330bf1c4d87)
