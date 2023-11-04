@@ -41,7 +41,6 @@ class Perfil(models.Model):
     crianca = models.OneToOneField(Children, on_delete=models.DO_NOTHING, blank=True, null=True)
     crianca_autorizada = models.BooleanField(default=False)
     doacoes = models.ManyToManyField(Doacao, default=None, blank=True)
-    #doacoes = ArrayField(models.IntegerField(default=list))
 
     def __str__(self):
         return self.usuario.username

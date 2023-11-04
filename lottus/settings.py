@@ -84,7 +84,7 @@ DATABASES = {
         'NAME': 'postgres',
         'USER': 'adminth',
         'PASSWORD': 'ADWaATH123!',
-        'HOST': 'triphelperdb.postgres.database.azure.com', 
+        'HOST': 'cesar-projetos.postgres.database.azure.com', 
         'PORT': '5432',
     }
 }
