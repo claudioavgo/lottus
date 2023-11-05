@@ -81,10 +81,10 @@ WSGI_APPLICATION = 'lottus.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'postgres',
+        'NAME': 'postgre_xsuv',
         'USER': 'adminth',
-        'PASSWORD': 'ADWaATH123!',
-        'HOST': 'cesar-projetos.postgres.database.azure.com', 
+        'PASSWORD': 'ewj2uOFLrZ1QqCUCxcb2X88OrH5uSAk6',
+        'HOST': 'dpg-cl3drvot3kic73db8nn0-a.oregon-postgres.render.com', 
         'PORT': '5432',
     }
 }

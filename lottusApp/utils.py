@@ -2,8 +2,6 @@ from lottusApp.models import *
 from django.contrib.auth.models import User
 from hashlib import sha256
 
-
-
 class UserController:
     def cadastrar(email, name, cpf, phone, password):
         user = User.objects.create_user(username=name, password=password, email=email)
@@ -27,5 +25,3 @@ def add_active(user, nome, desc, data):
     except Exception as e:
         print(e)
         return False
-
-UserController.cadastrar()
