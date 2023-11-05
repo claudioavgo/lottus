@@ -1,13 +1,16 @@
-from django.http import HttpResponse, JsonResponse
-from django.contrib.auth import authenticate, login, logout
-from django.contrib.auth import login as auth_login
-from django.shortcuts import redirect, render
-from django.contrib.auth.models import User
 import random
 
-from .models import *
+from django.contrib.auth import authenticate
+from django.contrib.auth import login
+from django.contrib.auth import login as auth_login
+from django.contrib.auth import logout
+from django.contrib.auth.models import User
+from django.http import HttpResponse, JsonResponse
+from django.shortcuts import redirect, render
 
+from .models import *
 from .utils import *
+
 
 def requer_autenticacao(f):
     def dec(request, *args, **kwargs):
@@ -229,3 +232,13 @@ def dash_aprovar_contrato(request, user, crianca):
     padrinho.save()
 
     return redirect(f"/dashboard/crianca/{crianca}")
+
+# Empresa
+
+@requer_autenticacao
+def empresa(request,user):
+    context = {
+            'user': user,
+            'more':  {"criancas": Children.objects.all(), "usuarios": Perfil.objects.all()} if user.usuario.is_staff else False,
+        }
+    return render(request, "home/empresa.html", context)
