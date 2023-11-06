@@ -238,7 +238,6 @@ def dash_aprovar_contrato(request, user, crianca):
 @requer_autenticacao
 def empresa(request,user):
     context = {
-            'user': user,
-            'more':  {"criancas": Children.objects.all(), "usuarios": Perfil.objects.all()} if user.usuario.is_staff else False,
-        }
+        'user': user,
+    }
     return render(request, "home/empresa.html", context)
