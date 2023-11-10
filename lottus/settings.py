@@ -81,10 +81,10 @@ WSGI_APPLICATION = 'lottus.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'postgre_xsuv',
-        'USER': 'adminth',
-        'PASSWORD': 'ewj2uOFLrZ1QqCUCxcb2X88OrH5uSAk6',
-        'HOST': 'dpg-cl3drvot3kic73db8nn0-a.oregon-postgres.render.com', 
+        'NAME': 'postgre',
+        'USER': 'claudioavgo',
+        'PASSWORD': '6T4krdxyjEUN',
+        'HOST': 'ep-shiny-limit-67020525.us-east-2.aws.neon.tech', 
         'PORT': '5432',
     }
 }
