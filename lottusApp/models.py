@@ -1,5 +1,6 @@
 from django.conf import settings
 from django.contrib.auth.models import User
+from django.contrib.postgres.fields import ArrayField
 from django.db import models
 
 # Create your models here.
@@ -11,6 +12,14 @@ class Atividade(models.Model):
 
     def __str__(self):
         return self.nome
+    
+class Doacao(models.Model):
+    valor = models.FloatField()
+    #data = models.DateField()
+    desc = models.TextField()
+
+    def __str__(self):
+        return self.desc
 
 class Children(models.Model):
     nome = models.CharField(max_length=256)
@@ -31,6 +40,7 @@ class Perfil(models.Model):
     usuario = models.OneToOneField(User, on_delete=models.CASCADE)
     crianca = models.OneToOneField(Children, on_delete=models.DO_NOTHING, blank=True, null=True)
     crianca_autorizada = models.BooleanField(default=False)
+    doacoes = models.ManyToManyField(Doacao, default=None, blank=True)
 
     def __str__(self):
         return self.usuario.username

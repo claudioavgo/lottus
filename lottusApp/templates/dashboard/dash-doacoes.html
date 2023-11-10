@@ -28,6 +28,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/apadrinhe">Apadrinhe uma criança</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/empresa">Cadastre sua empresa</a>
+                    </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                             aria-expanded="false">
@@ -72,10 +75,10 @@
                     <div class="menu accordion">
                         <ul class="menu-list">
                             <li>
-                                <a class="menu-item active" href="/dashboard">Página Principal</a>
+                                <a class="menu-item" href="/dashboard">Página Principal</a>
                             </li>
                             <li>
-                                <a class="menu-item" href="/dashboard/doacoes">Minhas doações</a>
+                                <a class="menu-item active" href="/dashboard/doacoes">Minhas doações</a>
                             </li>
                             <li>
                                 {% if user.crianca and user.crianca_autorizada and not user.usuario.is_staff %}
@@ -95,7 +98,7 @@
                                         </ul>
                                     </div>
 
-                                {% else %}
+                                {% elif user.usuario.is_staff %}
 
                                     <div class="menu-item">
                                         <button class="accordion-button p-0 bg-transparent text-reset" type="button"
@@ -157,25 +160,23 @@
         </div>
     </div>
 
-    <div class="list-group" style="padding: 5rem 15rem 15rem 17rem; width: 100%;">
-        <button type="button" class="list-group-item list-group-item-action active" aria-current="true">
-          Doações
-        </button>
-        <button type="button" class="list-group-item list-group-item-action">R$ 100</button>
+    <div class="list-group" style="padding: 5rem 15rem 0rem 17rem; width: 100%;">
+        <h3>Doações</h3>
+        <ul class="list-group" style="overflow-y:scroll; height:300px;">
+            {% for i in user.doacoes.all %}
+                <li class="list-group-item">{{ i.valor }}</li>
+            {% endfor %}
+        </ul>
     </div>
 
-    <div style="padding: 5rem 15rem 15rem 17rem; width: 100%;">
-        <form class="row g-3 needs-validation" novalidate>
-            
-            
+    <div style="padding: 5rem 15rem 0rem 17rem; width: 100%;">
+        <form class="row g-3 needs-validation" action="/dashboard/doacoes" method="post">
+            {% csrf_token %}
             <div class="col-md-4 position-relative">
               <label for="validationTooltipUsername" class="form-label">Doe agora</label>
               <div class="input-group has-validation">
                 <span class="input-group-text" id="validationTooltipUsernamePrepend">R$</span>
-                <input type="text" class="form-control" id="validationTooltipUsername" aria-describedby="validationTooltipUsernamePrepend" required>
-                <div class="invalid-tooltip">
-                  Please choose a unique and valid username.
-                </div>
+                <input name="valor" type="number" class="form-control" id="validationTooltipUsername" aria-describedby="validationTooltipUsernamePrepend" required>
               </div>
             </div>
             <div class="col-12">

@@ -117,7 +117,7 @@ GitHub.sublime-settings
 .history
 
 # Personal additions
-__pycache__/
+*/__pycache__/
 *.pyc
 __localcode
 venv

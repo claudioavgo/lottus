@@ -9,6 +9,28 @@
         integrity="sha256-xLGBU65wCDv2/qEdq3ZYw2Qdiia/wxxeGepRyZmpQdY=" crossorigin="anonymous">
 </head>
 
+<style>
+    .rectangle {
+        width: 340px;
+        height: 380px;
+        background-color: #F2F2F2;
+    }
+    .title-link {
+        color: black;
+        font-size: 18px;
+        line-height: 30px;
+        font-weight: 600;
+        text-decoration: none;
+    }
+    .flex-center {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin-top: 80px;
+        text-align: center;
+    }
+</style>
+
 <body>
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
@@ -28,6 +50,9 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/apadrinhe">Apadrinhe uma criança</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/empresa">Cadastre sua empresa</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
@@ -49,8 +74,8 @@
                     </ul>
                 <div>
                     {% if not user %}
-                    <a href="/login" class="btn btn-outline-dark">Login</a>
-                    <a href="/cadastro" class="btn btn-outline-dark">Cadastre-se</a>
+                        <a href="/login" class="btn btn-outline-dark">Login</a>
+                        <a href="/cadastro" class="btn btn-outline-dark">Cadastre-se</a>
                     {% else %}
                     <li class="nav-item dropdown">
                         <a class="avatar" href="#" data-bs-toggle="dropdown" aria-expanded="false">
@@ -90,14 +115,46 @@
     </div>
     <div
         style="padding: 5rem 10rem 5rem 10rem; display: flex; justify-content: center; align-items: center; flex-direction: column;">
-        <div style="display: flex; justify-content: space-evenly; align-items: center; width: 30%;">
-            <button class="btn btn-primary btn-lg" style="margin-top: 2rem;" type="submit">Faça uma doação</button>
-            <button class="btn btn-primary btn-lg" style="margin-top: 2rem;" type="submit">Apadrinhar</button>
+        <div style="display: flex; justify-content: space-evenly; align-items: center; width: 50%;">
+            <a href="/doar" style="margin-right: 1rem;">
+                <button class="btn btn-primary btn-lg" style="margin-top: 2rem;" type="submit">Faça uma doação</button>
+            </a>
+            <a href="/apadrinhe">
+                <button class="btn btn-primary btn-lg" style="margin-top: 2rem;" type="submit">Apadrinhe uma criança</button>
+            </a>
         </div>
         <div style=" text-align: center;">
             <h4><br>11 5093-0883<br>11 98879-2324<br>gotasdeflor@gotasdeflor.org.br</h4>
         </div>
     </div>
+
+    <div class="flex-center" style="gap: 60px;">
+        <div>
+            <a href="/">
+                <img src="https://images.unsplash.com/photo-1560130958-0ea787c275de?auto=format&fit=crop&q=60&w=600&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8a2luZGVyZ2FydGVufGVufDB8fDB8fHww" class="rectangle" alt="Imagem 1">
+            </a>
+            <div id="text">
+                <a href="/" class="title-link">DIA A DIA DAS CRIANÇAS</a>
+            </div>
+        </div>
+        <div>
+            <a href="/">
+                <img src="https://images.unsplash.com/photo-1541692641319-981cc79ee10a?auto=format&fit=crop&q=60&w=600&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGtpbmRlcmdhcnRlbnxlbnwwfHwwfHx8MA%3D%3D" class="rectangle" alt="Imagem 2">
+            </a>
+            <div id="text">
+                <a href="/" class="title-link">ATIVIDADES</a>
+            </div>
+        </div>
+        <div>
+            <a href="/">
+                <img src="https://plus.unsplash.com/premium_photo-1663126901191-5285f19a4782?auto=format&fit=crop&q=60&w=600&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8Y2xhc3Nyb29tJTIwa2lkc3xlbnwwfHwwfHx8MA%3D%3D" class="rectangle" alt="Imagem 3">
+            </a>
+            <div id="text">
+                <a href="/" class="title-link">PROJETOS</a>
+            </div>
+        </div>
+    </div>
+
 </body>
 <script src="https://cdn.jsdelivr.net/npm/fastbootstrap@1.1.2/dist/js/fastbootstrap.min.js"
     integrity="sha256-+c+/OCMmtlZadi89VaV1yUOkk1T4BD2pwBFpY3OcrqI=" crossorigin="anonymous"></script>

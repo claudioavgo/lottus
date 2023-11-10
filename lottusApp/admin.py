@@ -8,3 +8,4 @@ from .models import *
 admin.site.register(Children)
 admin.site.register(Perfil)
 admin.site.register(Atividade)
+admin.site.register(Doacao)

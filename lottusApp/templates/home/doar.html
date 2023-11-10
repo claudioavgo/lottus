@@ -29,6 +29,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/apadrinhe">Apadrinhe uma criança</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/empresa">Cadastre sua empresa</a>
+                    </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                             aria-expanded="false">
@@ -40,9 +43,11 @@
                             <li><a class="dropdown-item" target="_blank"
                                     href="https://sites.google.com/cesar.school/lottus/in%C3%ADcio">O projeto</a></li>
                         </ul>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/dashboard">Dashboard</a>
-                        </li>
+                        {% if user %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="/dashboard">Dashboard</a>
+                            </li>
+                        {% endif %}
                     </li>
                 </ul>
                 <div>
@@ -70,10 +75,9 @@
         style="padding: 5rem 10rem 5rem 10rem; display: flex; justify-content: center; align-items: center; flex-direction: column;">
         <h1>Método de doação</h1>
         <div style="display: flex; justify-content: space-evenly; align-items: center; width: 80%; margin-top: 2rem;">
-            <button class="btn btn-primary btn-lg" type="submit">Transferência bancária</button>
-            <button class="btn btn-primary btn-lg" type="submit">Pix</button>
-            <button class="btn btn-primary btn-lg" type="submit">Cartão</button>
-            <button class="btn btn-primary btn-lg" type="submit">Boleto bancário</button>
+            <a href="{% if user %}/dashboard/doacoes{% else %}/cadastro{% endif %}">
+                <button class="btn btn-primary btn-lg" type="submit">Doe agora</button>
+            </a>
         </div>
     </div>
 

@@ -27,6 +27,9 @@
                         <li class="nav-item">
                             <a class="nav-link" href="/apadrinhe">Apadrinhe uma criança</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/empresa">Cadastre sua empresa</a>
+                        </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                                 aria-expanded="false">
@@ -70,7 +73,7 @@
                         <div class="menu accordion">
                             <ul class="menu-list">
                                 <li>
-                                    <a class="menu-item active" href="/dashboard">Página Principal</a>
+                                    <a class="menu-item" href="/dashboard">Página Principal</a>
                                 </li>
                                 <li>
                                     <a class="menu-item" href="/dashboard/doacoes">Minhas doações</a>
@@ -104,7 +107,7 @@
                                             <ul class="menu-list">
                                                 {% for i in more.criancas %}
                                                 <li>
-                                                    <a class="menu-item" href="/dashboard/crianca/{{i.nome}}">{{ i.nome }} {{ i.sobrenome }}</a>
+                                                    <a class="menu-item {% if i.nome == crianca.nome %}active{% endif %}" href="/dashboard/crianca/{{i.nome}}">{{ i.nome }} {{ i.sobrenome }}</a>
                                                 </li>
                                                 {% endfor %}
                                                 <li>
@@ -169,7 +172,14 @@
                                     <br />
                                     <i class="glyphicon glyphicon-gift"></i>{{ crianca.data_nascimento }}</p>
                                     <div class="btn-group">
-                                        <button type="button" class="btn btn-primary">Adicionar atividade</button>
+                                        <a href="/dashboard/adicionar/atividade?crianca={{ crianca }}" style="margin-right: 1rem;">
+                                            <button type="button" class="btn btn-primary">Adicionar atividade</button>
+                                        </a>
+                                        {% if crianca.padrinho and not padrinho.crianca_autorizada %}
+                                        <a href="/dashboard/aprovar/contrato/{{ crianca }}">
+                                            <button type="button" class="btn btn-primary">Aprovar contrato</button>
+                                        </a>
+                                        {% endif %}
                                     </div>
                                 </div>
                             </div>
