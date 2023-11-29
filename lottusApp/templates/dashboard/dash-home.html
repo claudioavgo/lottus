@@ -12,65 +12,7 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary" style="position: fixed; width: 100%; z-index: 2;background-color: white;">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="/">Cultive</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="/">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/doar">Faça sua doação</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/apadrinhe">Apadrinhe uma criança</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/empresa">Cadastre sua empresa</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                            aria-expanded="false">
-                            Mais informações
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" target="_blank"
-                                    href="https://github.com/claudioavgo/lottus">Nosso GitHub</a></li>
-                            <li><a class="dropdown-item" target="_blank"
-                                    href="https://sites.google.com/cesar.school/lottus/in%C3%ADcio">O projeto</a></li>
-                        </ul>
-                        <li class="nav-item">
-                            <a class="nav-link active" href="/dashboard">Dashboard</a>
-                        </li>
-                    </li>
-                </ul>
-                <div>
-                    {% if not user %}
-                    <a href="/login" class="btn btn-outline-dark">Login</a>
-                    <a href="/cadastro" class="btn btn-outline-dark">Cadastre-se</a>
-                    {% else %}
-                    <li class="nav-item dropdown">
-                      <a class="avatar" href="#" data-bs-toggle="dropdown" aria-expanded="false">
-                        <span class="avatar text-bg-secondary">{{ user.usuario.username.0 }}</span>
-                      </a>
-                      <ul class="dropdown-menu dropdown-menu-end">
-                        <li><a class="dropdown-item" href="#">Configurações</a></li>
-                        <li><a class="dropdown-item" href="#">Perfil</a></li>
-                        <li><a class="dropdown-item" href="/logout">Sair</a></li>
-                      </ul>
-                    </li>
-                    {% endif %}
-                  </div>
-            </div>
-        </div>
-    </nav>
-
+    
     <div class="layout" style="position: fixed">
         <div class="layout-sidebar">
             <div class="sidenav show border-end" style="height: 92%; top: 3.5rem;z-index: 1;">

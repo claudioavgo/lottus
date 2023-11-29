@@ -21,6 +21,15 @@ class Doacao(models.Model):
     def __str__(self):
         return self.desc
 
+
+
+class ItemPrestacao(models.Model):
+    valor = models.FloatField()
+    desc = models.TextField()
+
+    def __str__(self):
+        return self.desc
+
 class Children(models.Model):
     nome = models.CharField(max_length=256)
     sobrenome = models.CharField(max_length=256)
