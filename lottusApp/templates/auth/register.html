@@ -1,150 +1,43 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="pt-br">
-   <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Cultive</title>
-      <link href="https://cdn.jsdelivr.net/npm/fastbootstrap@1.1.2/dist/css/fastbootstrap.min.css" rel="stylesheet" integrity="sha256-xLGBU65wCDv2/qEdq3ZYw2Qdiia/wxxeGepRyZmpQdY=" crossorigin="anonymous">
-   </head>
-   <body>
-      
+{% extends 'base.html' %}
+{% block cor_login %}#3d348b{% endblock cor_login %}
+{% block cor_cadastro %}#29226c{% endblock cor_cadastro %}
 
-
-   
-   <nav class="navbar navbar-expand-lg bg-body-tertiary" style="margin-left: 5%; margin-right: 5%; border-bottom: 1.5px solid black;">
-      <div class="container-fluid">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-               data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-               aria-label="Toggle navigation">
-               <span class="navbar-toggler-icon"></span>
-            </button>
-   
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-               <div class="d-flex align-items-center">
-                  <img class="gota-navbar" style="width: 103px; height: 90px; flex-shrink: 0; margin-right: 10px;" src="{% static 'gota-navbar.png' %}" alt="Logo">
-                  <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                           <a class="nav-link" href="/">Cultive</a>
-                        </li>
-                        <li class="nav-item">
-                           <a class="nav-link" href="/apadrinhe">Apadrinhe uma criança</a>
-                        </li>
-                        <li class="nav-item">
-                           <a class="nav-link" href="/doar">Doe agora</a>
-                        </li>
-                        <li class="nav-item">
-                           <a class="nav-link" href="/empresa">Cadastre sua empresa</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                              aria-expanded="false">
-                              Mais informações
-                           </a>
-                           <ul class="dropdown-menu">
-                              <li><a class="dropdown-item" target="_blank" href="https://github.com/claudioavgo/lottus">Nosso GitHub</a></li>
-                              <li><a class="dropdown-item" target="_blank" href="https://sites.google.com/cesar.school/lottus/in%C3%ADcio">O projeto</a></li>
-                           </ul>
-                        </li>
-                  </ul>
-               </div>
-               <div class="ms-auto">
-                  <a href="/login" class="btn btn-outline-dark active" style="border-radius: 15px; background: #3D348B;">Login</a>
-                  <a href="/cadastro" class="btn btn-outline-dark active" aria-current="page" style="border-radius: 15px; background: #29226C;">Cadastro</a>
-               </div>
-            </div>
-      </div>
-   </nav>
-     
-   
-
-
-
-
-      <div style="padding: 3rem 10rem 5rem 10rem; display: flex; justify-content: center; align-items: center; flex-direction: column; width: 100%;">
-         <form method="post" action="/cadastro">
-            {% csrf_token %}
-            <div class="mb-3">
-               <label for="exampleInputPassword1" class="form-label">Nome completo</label>
-               <input name="username" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
-            </div>
-            <div class="mb-3">
-               <label for="exampleInputEmail1" class="form-label">Endereço de e-mail</label>
-               <input name="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
-            </div>
-            <div class="mb-3">
-               <label for="exampleInputPassword1" class="form-label">CPF</label>
-               <input name="cpf" type="text" class="form-control" id="cpfInput" aria-describedby="emailHelp" />
-            </div>
-            <div class="mb-3">
-               <label for="exampleInputPassword1" class="form-label">Telefone</label>
-               <input name="telefone" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
-            </div>
-            <div class="mb-3">
-               <label for="exampleInputPassword1" class="form-label">Senha</label>
-               <input type="password" class="form-control" id="exampleInputPassword1" />
-            </div>
-            <div class="mb-3">
-               <label for="exampleInputPassword1" class="form-label">Confirmar senha</label>
-               <input name="password" type="password" class="form-control" id="exampleInputPassword1" />
-            </div>
-            <div class="mb-3 form-check">
-               <input type="checkbox" class="form-check-input" id="exampleCheck1" checked />
-               <label class="form-check-label" for="exampleCheck1">Concordo com a <a target="_blank" href="https://sites.google.com/cesar.school/lottus/in%C3%ADcio">finalidade do projeto</a>.</label>
-            </div>
-            <div class="text-end">
-               <button type="submit" class="btn btn-primary btn-rounded">Cadastrar-se</button>
-            </div>
-         </form>
-         <div class="flor"></div>
-      </div>
-   </body>
-   <style>
-        .form-control {
-            border-radius: 20px;
-            border: 1px solid rgba(0, 0, 0, 0.50);
-            background: rgba(217, 217, 217, 0.00);
-        }
-
-        .form-label {
-            color: #000;
-            font-family: ; 
-            font-size: 20px;
-            font-style: normal;
-            font-weight: 400;
-            line-height: normal;
-        }
-
-        .btn-rounded {
-            border-radius: 20px;
-            border: 3px solid #3D348B;
-            background: rgba(217, 217, 217, 0.00);
-            color: #3D348B;
-            font-family: ;
-            font-size: 20px;
-            font-style: normal;
-            font-weight: 600;
-            line-height: normal;
-        }
-
-        .form-check-input {
-            border: 2px solid #3D348B;
-            background: rgba(217, 217, 217, 0.00);
-            box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.25);
-        }
-
-        .flor {
-            width: 537px;
-            height: 449px;
-            flex-shrink: 0;
-            background: url("{% static 'flor.png' %}");
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            background-repeat: no-repeat;
-            background-position: left bottom;
-            
-        }                
-    </style>
-   <script src="https://cdn.jsdelivr.net/npm/fastbootstrap@1.1.2/dist/js/fastbootstrap.min.js" integrity="sha256-+c+/OCMmtlZadi89VaV1yUOkk1T4BD2pwBFpY3OcrqI=" crossorigin="anonymous"></script>
-</html>
+{% block content %}
+   <div style="padding: 3rem 10rem 5rem 10rem; display: flex; justify-content: center; align-items: center; flex-direction: column; width: 100%;">
+      <form method="post" action="/cadastro">
+         {% csrf_token %}
+         <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Nome completo</label>
+            <input name="username" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
+         </div>
+         <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Endereço de e-mail</label>
+            <input name="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
+         </div>
+         <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">CPF</label>
+            <input name="cpf" type="text" class="form-control" id="cpfInput" aria-describedby="emailHelp" />
+         </div>
+         <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Telefone</label>
+            <input name="telefone" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
+         </div>
+         <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Senha</label>
+            <input type="password" class="form-control" id="exampleInputPassword1" />
+         </div>
+         <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Confirmar senha</label>
+            <input name="password" type="password" class="form-control" id="exampleInputPassword1" />
+         </div>
+         <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" id="exampleCheck1" checked />
+            <label class="form-check-label" for="exampleCheck1">Concordo com a <a target="_blank" href="https://sites.google.com/cesar.school/lottus/in%C3%ADcio">finalidade do projeto</a>.</label>
+         </div>
+         <div class="text-end">
+            <button type="submit" class="btn btn-primary btn-rounded">Cadastrar-se</button>
+         </div>
+      </form>
+      <div class="flor"></div>
+   </div>
+{% endblock %}
