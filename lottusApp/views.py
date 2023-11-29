@@ -25,6 +25,16 @@ def requer_autenticacao(f):
     return dec
 
 # Página principal
+def diaadiadogotas(request):
+    return render(request, 'home/diaadiadogotas.html', context={
+        'name': 'Dia a dia do gotas'
+    })
+
+def iniciativasdogotas(request):
+    return render(request, 'home/iniciativasdogotas.html', context={
+        'name': 'Iniciativas do gotas'
+    })
+
 @requer_autenticacao
 def home(request, user):
     context = {
