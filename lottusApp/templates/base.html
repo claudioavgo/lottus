@@ -11,29 +11,24 @@
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 		<!-- Tailwind CSS CDN Links -->
-		<link
-			href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css"
-			rel="stylesheet" />
+		<link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet" />
 	</head>
 	<body>
-		<div class="container-fluid" style="display: flex; align-items: center">
+		<div class="flex w-screen border-b border-2" >
 			<a href="/"
 				><img
 					class="gota-navbar"
 					style="
 						width: 173px;
-						height: 42;
 						flex-shrink: 0;
-						margin-right: 10px;
-						margin-left: 5%;
 					"
 					src="{% static 'gota-navbar.png' %}"
 					alt="Logo"
 			/></a>
-			<nav
-				class="navbar navbar-expand-lg bg-body-tertiary ">
-				<div class="collapse navbar-collapse w-100" id="navbarSupportedContent">
-					<div class="d-flex align-items-center">
+			<div
+				class="navbar navbar-expand-lg bg-body-tertiary w-full">
+				<div class="collapse navbar-collapse w-full" id="navbarSupportedContent">
+					<div class="d-flex w-full">
 						<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 							<li class="nav-item">
 								<a class="nav-link" href="/apadrinhe">Apadrinhe uma criança</a>
@@ -54,7 +49,7 @@
 									<li>
 										<a
 											class="dropdown-item"
-											href="home/empresa-info"
+											href="/empresa-info"
 											>Informações</a
 										>
 									</li>
@@ -95,7 +90,7 @@
 							</li>
 						</ul>
 					</div>
-					<div class="">
+					<div class="flex">
 						<a
 							href="/login"
 							class="btn btn-outline-dark active"
@@ -112,7 +107,7 @@
 						>
 					</div>
 				</div>
-			</nav>
+			</div>
 		</div>
 
 		{% block content %} {% endblock content %}
