@@ -1,0 +1,36 @@
+{% extends 'base.html' %} 
+{% block cor_login %}#3d348b{% endblock cor_login %}
+{% block cor_cadastro %}#29226c{% endblock cor_cadastro %} 
+{% block content %}
+{% load static %}
+<div
+	style="
+		padding: 5rem 10rem 5rem 10rem;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+	">
+	<h1>Apadrinhe uma criança</h1>
+	<a href="/dashboard/apadrinhar">
+		<button
+			class="btn btn-primary btn-lg"
+			style="margin-top: 2rem"
+			type="submit">
+			Apadrinhar
+		</button>
+	</a>
+	<div style="text-align: center; margin-top: 2rem">
+		<h5>
+			aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+		</h5>
+		<h5>
+			Entre em contato com a gente através dos canais abaixo, tire suas dúvidas
+			e embarque nessa felicidade com a turminha do Gotas!
+		</h5>
+		<h4>
+			<br />11 5093-0883<br />11 98879-2324<br />gotasdeflor@gotasdeflor.org.br
+		</h4>
+	</div>
+</div>
+{% endblock %}
