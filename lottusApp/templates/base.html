@@ -1,0 +1,185 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Cultive</title>
+		<link
+			href="https://cdn.jsdelivr.net/npm/fastbootstrap@1.1.2/dist/css/fastbootstrap.min.css"
+			rel="stylesheet"
+			integrity="sha256-xLGBU65wCDv2/qEdq3ZYw2Qdiia/wxxeGepRyZmpQdY="
+			crossorigin="anonymous" />
+	</head>
+	<body>
+		<div class="container-fluid" style="display: flex; align-items: center">
+			<a href="/"
+				><img
+					class="gota-navbar"
+					style="
+						width: 173px;
+						height: 42;
+						flex-shrink: 0;
+						margin-right: 10px;
+						margin-left: 5%;
+					"
+					src="{% static 'gota-navbar.png' %}"
+					alt="Logo"
+			/></a>
+			<nav
+				class="navbar navbar-expand-lg bg-body-tertiary"
+				style="margin-right: 5%; border-bottom: 1.5px solid black; width: 100%">
+				<button
+					class="navbar-toggler"
+					type="button"
+					data-bs-toggle="collapse"
+					data-bs-target="#navbarSupportedContent"
+					aria-controls="navbarSupportedContent"
+					aria-expanded="false"
+					aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+
+				<div class="collapse navbar-collapse" id="navbarSupportedContent">
+					<div class="d-flex align-items-center">
+						<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+							<li class="nav-item">
+								<a class="nav-link" href="/apadrinhe">Apadrinhe uma criança</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="/doar">Doe agora</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="/empresa">Cadastre sua empresa</a>
+							</li>
+							<li class="nav-item dropdown">
+								<a
+									class="nav-link dropdown-toggle"
+									href="#"
+									role="button"
+									data-bs-toggle="dropdown"
+									aria-expanded="false">
+									Mais informações
+								</a>
+								<ul class="dropdown-menu">
+									<li>
+										<a
+											class="dropdown-item"
+											target="_blank"
+											href="https://github.com/claudioavgo/lottus"
+											>Nosso GitHub</a
+										>
+									</li>
+									<li>
+										<a
+											class="dropdown-item"
+											target="_blank"
+											href="https://sites.google.com/cesar.school/lottus/in%C3%ADcio"
+											>O projeto</a
+										>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+					<div class="ms-auto">
+						<a
+							href="/login"
+							class="btn btn-outline-dark active"
+							style="border-radius: 15px; background: {% block cor_login %}{% endblock cor_login %}"
+							>Login</a
+						>
+
+						<a
+							href="/cadastro"
+							class="btn btn-outline-dark active"
+							aria-current="page"
+							style="border-radius: 15px; background: {% block cor_cadastro %}{% endblock cor_cadastro %}"
+							>Cadastro</a
+						>
+					</div>
+				</div>
+			</nav>
+		</div>
+
+		{% block content %} {% endblock content %}
+	</body>
+	<style>
+		.form-control {
+			border-radius: 20px;
+			border: 1px solid rgba(0, 0, 0, 0.5);
+			background: rgba(217, 217, 217, 0);
+		}
+
+		.form-label {
+			color: #000;
+			font-size: 20px;
+			font-style: normal;
+			font-weight: 400;
+			line-height: normal;
+		}
+
+		.btn-rounded {
+			border-radius: 20px;
+			border: 3px solid #3d348b;
+			background: rgba(217, 217, 217, 0);
+			color: #3d348b;
+			font-size: 20px;
+			font-style: normal;
+			font-weight: 600;
+			line-height: normal;
+		}
+
+		.form-check-input {
+			border: 2px solid #3d348b;
+			background: rgba(217, 217, 217, 0);
+			box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.25);
+		}
+
+		.flor {
+			width: 537px;
+			height: 449px;
+			flex-shrink: 0;
+			background: url("{% static 'flor.png' %}");
+			position: fixed;
+			bottom: 0;
+			left: 0;
+			background-repeat: no-repeat;
+			background-position: left bottom;
+		}
+
+		.parabens-box {
+			position: fixed;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			padding: 20px;
+			background-color: #fff;
+			border: 2px solid #3d348b;
+			border-radius: 10px;
+			box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+			text-align: center;
+			z-index: 1001;
+		}
+
+		body {
+			transition: filter 0.5s;
+		}
+
+		#overlay {
+			display: none;
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background: rgba(0, 0, 0, 0.5); /* Cinza transparente */
+			backdrop-filter: blur(5px); /* Efeito de desfoque */
+			z-index: 1000;
+		}
+	</style>
+	<script
+		src="https://cdn.jsdelivr.net/npm/fastbootstrap@1.1.2/dist/js/fastbootstrap.min.js"
+		integrity="sha256-+c+/OCMmtlZadi89VaV1yUOkk1T4BD2pwBFpY3OcrqI="
+		crossorigin="anonymous"></script>
+</html>
