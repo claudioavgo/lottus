@@ -1,44 +1,53 @@
 {% extends 'base.html' %} 
-{% block cor_login %}#29226c{% endblock cor_login %}
-{% block cor_cadastro %}#3d348b{% endblock cor_cadastro %} 
+{% load static %} 
+{% block cor_login %}#29226c{%endblock cor_login %} 
+{% block cor_cadastro %}#3d348b{% endblock cor_cadastro %}
 {% block content %}
-<div class = "text-indigo-800">
-<h4 class="font-bold text-2xl centro" >Dia a dia do Gotas de Flor com Amor</h4>
-<h5 class="text-xl centro"> Desenvolvemos as atividades focadas no desenvolvimento
-    integral do ser humano, atuando no físico, mental, social e espiritual</h5>
-<br></br>
-<h5 class="font-semibold text-xl centro">Acolhimento</h5>
-<h6 class="text-lg centro">As crianças chegam, recebem uma
-    <span class = "quebralinha"></span>refeição balanceada e participam
-    <span class = "quebralinha"></span>de uma roda de conversa inicial 
-    <span class = "quebralinha"></span>para saber sobre a proposta para o dia</h6>
-<h5 class="font-semibold text-xl centro">Floral e Atividades</h5>
-<h6 class="text-lg centro">Os que desejam tomam os florais
-    <span class = "quebralinha"></span>e todos seguem para as atividades</h6>
-<h5 class="font-semibold text-xl centro">Dispersão</h5>
-<h6 class="text-lg centro">Ao final se reúnem novamente 
-    <span class = "quebralinha"></span>em roda, avaliam como foi o dia
-    <span class = "quebralinha"></span>e seguem para mais uma refeição 
-    <span class = "quebralinha"></span>pensada com muito carinho e atenção</h6>
+
+<div class="fixed left-0 bottom-0 rounded z-0 border">
+  <img class="" src="{% static 'flor.png' %}" alt="" srcset="" />
 </div>
-<style>
-    .centro{
-        text-align: center;
-    }
-    .quebralinha{
-        display: block;
-        margin-bottom: 0.1em;
-    }
-</style>
-<div
-	style="
-		padding: 3rem 10rem 5rem 10rem;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		flex-direction: column;
-		width: 100%;
-	">
-	<div class="flor"></div>
+<div class="text-indigo-800 z-10">
+  <h4 class="font-bold text-2xl centro">
+    Dia sa dia do Gotas de Flor com Amor
+  </h4>
+  <h5 class="text-xl centro">
+    Desenvolvemos as atividades focadas no desenvolvimento integral do ser
+    humano, atuando no físico, mental, social e espiritual
+  </h5>
+  <br />
+
+  <div
+    class="shadow-xl bg-white rounded-lg w-36 h-36 ml-64 mr-64 mb-8 mt-6 font-semibold text-xl"
+  >
+    Acolhimento <br />
+    As crianças chegam, recebem uma refeição balanceada e participam de uma roda
+    de conversa inicial para saber sobre a proposta para o dia
+  </div>
+  <div
+    class="shadow-xl bg-white rounded-lg w-36 h-36 ml-64 mr-64 mb-8 mt-6 font-semibold text-xl"
+  >
+    Floral e Atividades <br />
+    Os que desejam tomam os florais e todos seguem para as atividades
+  </div>
+  <div
+    class="shadow-xl bg-white rounded-lg w-36 h-36 ml-64 mr-64 mb-8 mt-6 font-semibold text-xl"
+  >
+    Floral e Atividades <br />
+    Os que desejam tomam os florais e todos seguem para as atividades
+  </div>
+  <div
+    class="shadow-xl bg-white rounded-lg w-36 h-36 ml-64 mr-64 mb-8 mt-6 font-semibold text-xl"
+  >
+    Floral e Atividades <br />
+    Os que desejam tomam os florais e todos seguem para as atividades
+  </div>
+  <div
+    class="shadow-xl bg-white rounded-lg w-36 h-36 ml-64 mr-64 mb-8 mt-6 font-semibold text-xl"
+  >
+    Floral e Atividades <br />
+    Os que desejam tomam os florais e todos seguem para as atividades
+  </div>
 </div>
+
 {% endblock %}
