@@ -251,3 +251,10 @@ def empresa(request,user):
         'user': user,
     }
     return render(request, "home/empresa.html", context)
+
+@requer_autenticacao
+def empresa_info(request,user):
+    context = {
+        'user': user,
+    }
+    return render(request, "home/empresa-info.html", context)
