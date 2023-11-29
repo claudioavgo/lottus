@@ -55,6 +55,50 @@
 		</button>
 	</div>
 </div>
+<div class="flex-center" style="gap: 60px;">
+	<div>
+		<a href={%url 'iniciativasdogotas'%}>
+			<img src="https://t4.ftcdn.net/jpg/06/20/17/69/240_F_620176964_x6DemFbXBHr655l5dWUQyB7mSz9EMN9X.jpg" class="rectangle" alt="Imagem 2">
+		</a>
+		<div id="text">
+			<a href={%url 'iniciativasdogotas'%} class="title-link">Iniciativas do Gotas</a>
+			<br></br>
+		</div>
+	</div>   
+	<div>
+		<a href={%url 'diaadiadogotas'%}>
+			<img src="https://t3.ftcdn.net/jpg/06/09/56/94/240_F_609569452_ym8xS3kiHEFNsLFxjGCo5Jk69ysWcjdr.jpg" class="rectangle" alt="Imagem 3">
+		</a>
+		<div id="text">
+			<a href={%url 'diaadiadogotas'%} class="title-link">Dia a dia do gotas</a>
+			<br></br>
+		</div>
+	</div>
+	<div>
+	</div>
+	<br></br>
+<style>
+	.title-link {
+		color: black;
+		font-size: 18px;
+		line-height: 30px;
+		font-weight: 600;
+		text-decoration: none;
+	}
+
+	.flex-center {
+		display: flex;
+		justify-content: center;
+		flex-wrap: wrap;
+		margin-top: 80px;
+		text-align: center;
+	}
+
+	.rectangle {
+		width: 340px;
+		height: 380px;
+		background-color: #F2F2F2;
+	}
+</style>
 
 {% endblock content %}
-
