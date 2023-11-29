@@ -14,22 +14,18 @@
 		<link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet" />
 	</head>
 	<body>
-		<div class="flex w-screen border-b border-2" >
+		<div class="flex border border-b h-24 justify-left align-center px-32" >
 			<a href="/"
 				><img
-					class="gota-navbar"
-					style="
-						width: 173px;
-						flex-shrink: 0;
-					"
+					class="w-32"
 					src="{% static 'gota-navbar.png' %}"
 					alt="Logo"
 			/></a>
 			<div
 				class="navbar navbar-expand-lg bg-body-tertiary w-full">
 				<div class="collapse navbar-collapse w-full" id="navbarSupportedContent">
-					<div class="d-flex w-full">
-						<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+					<div class="d-flex  w-full">
+						<ul class="navbar-nav mb-2 mb-lg-0">
 							<li class="nav-item">
 								<a class="nav-link" href="/apadrinhe">Apadrinhe uma criança</a>
 							</li>
@@ -90,7 +86,7 @@
 							</li>
 						</ul>
 					</div>
-					<div class="flex">
+					<div class="flex space-x-5">
 						<a
 							href="/login"
 							class="btn btn-outline-dark active"

@@ -3,7 +3,8 @@
 {% block cor_login %}#3d348b{%endblock cor_login %}
 {% block cor_cadastro %}#29226c{% endblock cor_cadastro %}
 {% block content %}
-<div
+
+<div class="z-10"
 	style="
 		padding: 3rem 10rem 5rem 10rem;
 		display: flex;
@@ -54,46 +55,6 @@
 		</button>
 	</div>
 </div>
-<style>
-	.flex-center {
-		display: flex;
-		justify-content: center;
-		flex-wrap: wrap;
-		margin-top: 80px;
-		text-align: center;
-	}
 
-	.title-link {
-		color: black;
-		font-size: 18px;
-		line-height: 30px;
-		font-weight: 600;
-		text-decoration: none;
-	}
-	#text {
-		line-height: 1.5;
-		color: #f9f9f9;
-		font-size: 13px;
-	}
-</style>
-<div class="flex-center" style="gap: 60px;">
-	<div>
-		<a href="{%url 'diaadiadogotas'%}">
-			<img src="https://t3.ftcdn.net/jpg/06/09/56/94/240_F_609569452_ym8xS3kiHEFNsLFxjGCo5Jk69ysWcjdr.jpg" class="rectangle" alt="Imagem 1">
-		</a>
-		<div id="text">
-			<a href="{%url 'diaadiadogotas'%}" class="title-link">DIA A DIA DO GOTAS</a>
-		</div>
-	</div>        
-	<div>
-		<a href="{%url 'iniciativasdogotas'%}">
-			<img src="https://t4.ftcdn.net/jpg/03/59/32/89/240_F_359328983_xtAKyOe6xWXYIi1n98O1OoP1cobDIbB5.jpg" class="rectangle" alt="Imagem 2">
-		</a>
-		<div id="text">
-			<a href="{%url 'iniciativasdogotas'%}" class="title-link">INICIATIVAS DO GOTAS</a>
-		</div>
-	</div>    
-</div>
-
-<div style="width:100%; height: 0px; margin-top: 80px; margin-bottom: 80px;"></div>
 {% endblock content %}
+
