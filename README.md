@@ -81,6 +81,11 @@ Instale as dependencias usando "pip install -r ./requirements.txt"
   <img src="https://i.ibb.co/RTfw26X/Captura-de-tela-2023-10-16-233923.jpg"/>
 </a> 
 
+## Screencast testes automatizados SR2
+<a href="https://www.youtube.com/watch?v=SGaER5Fc460">
+  <img src="https://i.ibb.co/RTfw26X/Captura-de-tela-2023-10-16-233923.jpg"/>
+</a> 
+
 ## Relato de programação em par SR2
 Para continuar o desenvolvimento da aplicação web nós utilizamos a extensão Live Share, que permite a colaboração em tempo real no Visual Studio Code. O grupo fez diversas sessões de programação em pares e, elas foram organizadas em rodízios, ou seja, cada membro formou par com cada participante do grupo. O uso da programação em pares foi fundamental para o desenvolvimento da nossa aplicação e, também, trouxe mais agilidade, criatividade e assertividade para o nosso projeto. 
 
