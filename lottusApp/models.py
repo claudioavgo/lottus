@@ -28,9 +28,6 @@ class Valor(models.Model):
     def __str__(self):
         return self.desc
 
-class Prestacao(models.Model):
-    valores = models.ManyToManyField(Valor, default=None, blank=True)
-
 class Children(models.Model):
     nome = models.CharField(max_length=256)
     sobrenome = models.CharField(max_length=256)

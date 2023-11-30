@@ -39,10 +39,12 @@
             <p class="text-gray-600 mb-4">Padrinho: {% if crianca.padrinho %}{{ crianca.padrinho }}{% else %}Sem padrinho{% endif %}</p>
             <p class="text-gray-600 mb-4">Endereço: {{ crianca.local }}</p>
             <p class="text-gray-600 mb-4">Data de nascimento: {{ crianca.data_nascimento }}</p>
+            {% if user.usuario.is_staff %}
             <a href="/dashboard/adicionar/atividade?crianca={{ crianca }}"
                 class="inline-block rounded bg-indigo-600 px-4 py-2 text-xs font-medium text-white hover:bg-indigo-700 mt-4">
                 Adicionar Atividade
             </a>
+            {% endif %}
             {% if crianca.padrinho and not padrinho.crianca_autorizada %}
                                         <a href="/dashboard/aprovar/contrato/{{ crianca }}">
                                             <button type="button" class="inline-block rounded bg-indigo-600 px-4 py-2 text-xs font-medium text-white hover:bg-indigo-700 mt-4">Aprovar contrato</button>

@@ -1,105 +1,46 @@
-{% extends 'base.html' %} 
-{% load static %} 
-{% block cor_login %}#3d348b{%endblock cor_login %}
+{% extends 'base.html' %}
+{% load static %}
+
+{% block cor_login %}#3d348b{% endblock cor_login %}
 {% block cor_cadastro %}#29226c{% endblock cor_cadastro %}
 {% block content %}
-<div
-	style="
-		padding: 3rem 10rem 5rem 10rem;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		flex-direction: column;
-		width: 100%;
-	">
-	<div
-		id="carouselExampleInterval"
-		class="carousel slide"
-		data-bs-ride="carousel">
-		<div class="carousel-inner w-100">
-			<div class="carousel-item active" data-bs-interval="10000">
-				<img
-					src="{% static './images/home_image.png' %}"
-					class="d-block"
-					alt="..." />
-			</div>
-			<div class="carousel-item" data-bs-interval="2000">
-				<img
-					src="{% static './images/home_image.png' %}"
-					class="d-block"
-					alt="..." />
-			</div>
-			<div class="carousel-item">
-				<img
-					src="{% static './images/home_image.png' %}"
-					class="d-block"
-					alt="..." />
-			</div>
-		</div>
-		<button
-			class="carousel-control-prev"
-			type="button"
-			data-bs-target="#carouselExampleInterval"
-			data-bs-slide="prev">
-			<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-			<span class="visually-hidden">Previous</span>
-		</button>
-		<button
-			class="carousel-control-next"
-			type="button"
-			data-bs-target="#carouselExampleInterval"
-			data-bs-slide="next">
-			<span class="carousel-control-next-icon" aria-hidden="true"></span>
-			<span class="visually-hidden">Next</span>
-		</button>
-	</div>
-	
+<section class="bg-gray-100 py-16 px-4 sm:px-6 lg:px-8 p-5">
+  <div class="mx-auto flex items-center justify-center">
+    
+
+    <div class="w-full  mt-8 ">
+      <h2 class="text-4xl font-bold mb-6 text-gray-800">
+        Cuidando do Futuro: <br class="hidden lg:inline" />Apoiamos e Nutrimos Crianças
+      </h2>
+
+      <p class="text-lg text-gray-700 leading-relaxed">
+        A nossa ONG se dedica a proporcionar um ambiente seguro e acolhedor para todas as crianças. Oferecemos educação, alimentação saudável e carinho, garantindo um futuro brilhante para cada uma delas.
+      </p>
+    </div>
+  </div>
+</section>
+
+<div class=" mx-auto py-12 px-4 ">
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+    <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+      <a href="{% url 'iniciativasdogotas' %}">
+        <img src="https://t4.ftcdn.net/jpg/06/20/17/69/240_F_620176964_x6DemFbXBHr655l5dWUQyB7mSz9EMN9X.jpg" class="w-full h-56 object-cover" alt="Imagem 1">
+      </a>
+      <div class="p-4">
+        <a href="{% url 'iniciativasdogotas' %}" class="text-lg font-bold text-gray-800 hover:text-indigo-600">Iniciativas do Gotas</a>
+      </div>
+    </div>
+
+    <div class="bg-white  rounded-lg shadow-lg overflow-hidden">
+      <a href="{% url 'diaadiadogotas' %}">
+        <img src="https://t3.ftcdn.net/jpg/06/09/56/94/240_F_609569452_ym8xS3kiHEFNsLFxjGCo5Jk69ysWcjdr.jpg" class="w-full h-56 object-cover" alt="Imagem 2">
+      </a>
+      <div class="p-4">
+        <a href="{% url 'diaadiadogotas' %}" class="text-lg font-bold text-gray-800 hover:text-indigo-600">Dia a dia do Gotas</a>
+      </div>
+    </div>
+
+    <!-- Adicione mais divs com conteúdo semelhante se necessário -->
+  </div>
 </div>
-<div class="flex-center" style="gap: 60px;">
-	<div>
-		<a href={%url 'iniciativasdogotas'%}>
-			<img src="https://t4.ftcdn.net/jpg/06/20/17/69/240_F_620176964_x6DemFbXBHr655l5dWUQyB7mSz9EMN9X.jpg" class="rectangle" alt="Imagem 2">
-		</a>
-		<div id="text">
-			<a href={%url 'iniciativasdogotas'%} class="title-link">Iniciativas do Gotas</a>
-			<br></br>
-		</div>
-	</div>   
-	<div>
-		<a href={%url 'diaadiadogotas'%}>
-			<img src="https://t3.ftcdn.net/jpg/06/09/56/94/240_F_609569452_ym8xS3kiHEFNsLFxjGCo5Jk69ysWcjdr.jpg" class="rectangle" alt="Imagem 3">
-		</a>
-		<div id="text">
-			<a href={%url 'diaadiadogotas'%} class="title-link">Dia a dia do gotas</a>
-			<br></br>
-		</div>
-	</div>
-	<div>
-	</div>
-	<br></br>
-<style>
-	.title-link {
-		color: black;
-		font-size: 18px;
-		line-height: 30px;
-		font-weight: 600;
-		text-decoration: none;
-	}
-
-	.flex-center {
-		display: flex;
-		justify-content: center;
-		flex-wrap: wrap;
-		margin-top: 80px;
-		text-align: center;
-	}
-
-	.rectangle {
-		width: 340px;
-		height: 380px;
-		background-color: #F2F2F2;
-	}
-</style>
-
 {% endblock content %}
-

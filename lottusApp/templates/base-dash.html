@@ -139,6 +139,7 @@
 						Início
 					</a>
 					</li>
+					
 			
 					<li>
 					{% if user.usuario.is_staff %}	
@@ -207,6 +208,25 @@
 						Usuários cadastrados
 					</a>
 					</li>
+					{% else %}
+
+					<li>
+						<a
+							href="/dashboard/contrato"
+							class="block rounded-lg px-4 py-2 text-sm font-medium text-gray-700"
+						>
+							Contrato
+						</a>
+					</li>
+					<li>
+						<a
+							href="/dashboard/crianca/{{ user.crianca }}"
+							class="block rounded-lg px-4 py-2 text-sm font-medium text-gray-700"
+						>
+							Criança apadrinhada
+						</a>
+					</li>
+					
 					{% endif %}
 			
 					<li>

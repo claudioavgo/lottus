@@ -254,7 +254,8 @@ class apadrinhar_test(TestCase):
             time.sleep(0.1)
         
         elemento_input = driver.find_element(By.XPATH, "/html/body/div[2]/form/div[5]/input") 
-        elemento_input_1 = driver.find_element(By.XPATH, "/html/body/div[2]/form/div[6]/input") 
+        elemento_input_1 = driver.find_element(By.XPATH, "/html/body/div[2]/form/div[6]/input")
+        
 
         for i in range(9):
             valor_aleatorio = random.randint(1, 9)

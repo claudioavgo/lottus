@@ -227,8 +227,10 @@ def dash_random_child(request, user):
         return redirect(f"/cadastro")
 
     try:
-        if user.crianca:
+        if user.crianca and user.crianca_autorizada:
             return redirect(f"/dashboard")
+        elif user.crianca:
+            return redirect(f"/dashboard/contrato")
     except:
         print("Não possui criança")
 
