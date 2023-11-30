@@ -21,6 +21,16 @@ class Doacao(models.Model):
     def __str__(self):
         return self.desc
 
+class Valor(models.Model):
+    valor = models.FloatField()
+    desc = models.TextField()
+
+    def __str__(self):
+        return self.desc
+
+class Prestacao(models.Model):
+    valores = models.ManyToManyField(Valor, default=None, blank=True)
+
 class Children(models.Model):
     nome = models.CharField(max_length=256)
     sobrenome = models.CharField(max_length=256)
@@ -32,7 +42,6 @@ class Children(models.Model):
 
     def __str__(self):
         return self.nome
-
 
 class Perfil(models.Model):
     cpf = models.CharField(max_length=14)

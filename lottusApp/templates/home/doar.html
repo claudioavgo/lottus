@@ -1,29 +1,32 @@
-{% extends 'base.html' %} 
-{% block cor_login %}#3d348b{% endblock cor_login %}
-{% block cor_cadastro %}#29226c{% endblock cor_cadastro %} 
-{% block content %}
+{% extends 'base.html' %} {% block cor_login %}#3d348b{% endblock cor_login %}
+{% block cor_cadastro %}#29226c{% endblock cor_cadastro %} {% block content %}
 {% load static %}
 <div
-	style="
-		padding: 5rem 10rem 5rem 10rem;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		flex-direction: column;
-	">
-	<h1>Método de doação</h1>
-	<div
-		style="
-			display: flex;
-			justify-content: space-evenly;
-			align-items: center;
-			width: 80%;
-			margin-top: 2rem;
-		">
-		<a href="{% if user %}/dashboard/doacoes{% else %}/cadastro{% endif %}">
-			<button class="btn btn-primary btn-lg" type="submit">Doe agora</button>
-		</a>
-        <img src="{% static './images/flor-coracao.png' %}" class="d-block w-100" alt="..." style="width: 447px; height: 418px; flex-shrink: 0;">
-	</div>
+  style="
+  padding: 5rem 10rem 5rem 10rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  ">
+  <div
+    class="absolute z-0 mt-32"
+    style="width: 447px; height: 418px; flex-shrink: 0; opacity: 15%">
+    <img
+      src="{% static './images/flor-coracao.png' %}"
+      class="d-block w-100"
+      alt="..." />
+  </div>
+  <h1 class="text-center font-semibold text-2xl">
+    <span class="font-bold text-4xl">Faça sua doação</span><br />e mude o futuro
+    dessas crianças
+  </h1>
+  <div class="flex space-x-10 z-10 mt-32">
+    <a href="https://pag.ae/7VfvpKL9n" class="button-style">
+      <div class="flex justify-center items-center" style="width: 366px; height: 128px; flex-shrink: 0; border-radius: 0px 20px; background: #3d348b; box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.25); margin-top: 90px;">
+        <img src="{% static './images/pagbank-logo.png' %}" alt="...">
+      </div>
+    </a>
+  </div>
+  {% endblock %}
 </div>
-{% endblock %}

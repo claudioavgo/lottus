@@ -17,7 +17,8 @@ def requer_autenticacao(f):
         if (request.user.is_authenticated):
             username = request.user
 
-            usr = Perfil.objects.get(usuario=User.objects.get(username=username))
+            usr = Perfil.objects.get(
+                usuario=User.objects.get(username=username))
         else:
             usr = None
 
@@ -25,12 +26,15 @@ def requer_autenticacao(f):
     return dec
 
 # Página principal
+
+
 @requer_autenticacao
 def home(request, user):
     context = {
         'user': user,
     }
     return render(request, "home/home.html", context)
+
 
 @requer_autenticacao
 def doar(request, user):
@@ -47,11 +51,13 @@ def apadrinhe(request, user):
     }
     return render(request, "home/apadrinhe.html", context)
 
-def register(request):
+
+@requer_autenticacao
+def register(request, user):
     if request.method == "POST":
         if not UserController.existe(email=request.POST.get("email")):
             user = UserController.cadastrar(
-                cpf=request.POST.get("cpf"), 
+                cpf=request.POST.get("cpf"),
                 email=request.POST.get("email"),
                 name=request.POST.get("username"),
                 password=request.POST.get("password"),
@@ -65,16 +71,20 @@ def register(request):
 
         return redirect("/")
     else:
-        context = {"error": request.GET.get("error", 0)}
+        context = {"error": request.GET.get("error", 0), "user": user}
         return render(request, 'auth/register.html', context)
 
 
-def loginPage(request):
+@requer_autenticacao
+def loginPage(request, user):
     if request.method == "POST":
         try:
             print(request.POST.get("email"))
-            username = UserController.existe(email=request.POST.get("email")).username
-            user = authenticate(request, username=username, password=request.POST.get("password"))
+            username = UserController.existe(email=request.POST.get("email"))
+            if not username:
+                raise Exception("O usuário não existe")
+            user = authenticate(request, username=username,
+                                password=request.POST.get("password"))
 
             if (user):
                 login(request, user)
@@ -84,7 +94,7 @@ def loginPage(request):
             print(e)
             return redirect("/login?error=1")
     else:
-        context = {"error": request.GET.get("error", 0)}
+        context = {"error": request.GET.get("error", 0), "user": user}
         return render(request, 'auth/login.html', context)
 
 
@@ -94,6 +104,7 @@ def logoutPage(request):
 
 # Páginas do dashboard
 
+
 @requer_autenticacao
 def dash_crianca(request, user):
     context = {
@@ -101,6 +112,7 @@ def dash_crianca(request, user):
         'more':  {"criancas": Children.objects.all(), "usuarios": Perfil.objects.all()} if user.usuario.is_staff else False,
     }
     return render(request, "dashboard/dash-children.html", context)
+
 
 @requer_autenticacao
 def dashboard(request, user):
@@ -110,6 +122,7 @@ def dashboard(request, user):
     }
     return render(request, "dashboard/dash-home.html", context)
 
+
 @requer_autenticacao
 def contrato(request, user):
     context = {
@@ -117,6 +130,7 @@ def contrato(request, user):
         'more':  {"criancas": Children.objects.all(), "usuarios": Perfil.objects.all()} if user.usuario.is_staff else False,
     }
     return render(request, "dashboard/contract-page.html", context)
+
 
 @requer_autenticacao
 def dash_doacoes(request, user):
@@ -132,6 +146,7 @@ def dash_doacoes(request, user):
         }
         return render(request, "dashboard/dash-doacoes.html", context)
 
+
 @requer_autenticacao
 def dash_specific_child(request, user, nome):
     crianca = Children.objects.filter(nome=nome).first()
@@ -143,6 +158,7 @@ def dash_specific_child(request, user, nome):
 
     }
     return render(request, "dashboard/dash-specific-child.html", context)
+
 
 @requer_autenticacao
 def dash_specific_user(request, user, nome):
@@ -156,9 +172,10 @@ def dash_specific_user(request, user, nome):
     context = {
         'user': user,
         'more':  {"criancas": Children.objects.all(), "usuarios": Perfil.objects.all()} if user.usuario.is_staff else False,
-        'user': usr_perfil
+        'usuario': usr_perfil
     }
     return render(request, "dashboard/dash-specific-user.html", context)
+
 
 @requer_autenticacao
 def dash_add_child(request, user):
@@ -169,7 +186,8 @@ def dash_add_child(request, user):
         idade = request.POST.get("idade")
         data_nascimento = request.POST.get("data")
 
-        Children.objects.create(nome=nome, sobrenome=sobrenome, local=local, idade=idade, data_nascimento=data_nascimento)
+        Children.objects.create(nome=nome, sobrenome=sobrenome,
+                                local=local, idade=idade, data_nascimento=data_nascimento)
 
         return redirect("/dashboard/adicionar/crianca")
     else:
@@ -178,7 +196,8 @@ def dash_add_child(request, user):
             'more':  {"criancas": Children.objects.all(), "usuarios": Perfil.objects.all()} if user.usuario.is_staff else False,
         }
         return render(request, "dashboard/dash-add-child.html", context)
-    
+
+
 @requer_autenticacao
 def dash_add_activity(request, user):
     if request.method == "POST":
@@ -188,7 +207,7 @@ def dash_add_activity(request, user):
         crianca_nome = request.GET.get('crianca')
 
         atv = Atividade.objects.create(nome=nome, desc=desc, data=data)
-        
+
         ch = Children.objects.filter(nome=crianca_nome).first()
 
         ch.atividades.add(atv)
@@ -201,14 +220,18 @@ def dash_add_activity(request, user):
         }
         return render(request, "dashboard/dash-add-activity.html", context)
 
+
 @requer_autenticacao
 def dash_random_child(request, user):
     if not user:
         return redirect(f"/cadastro")
-    
-    if user.crianca:
-        return redirect(f"/dashboard")
-    
+
+    try:
+        if user.crianca:
+            return redirect(f"/dashboard")
+    except:
+        print("Não possui criança")
+
     criancas = Children.objects.all()
 
     choosed_child = random.choice(criancas)
@@ -223,6 +246,7 @@ def dash_random_child(request, user):
 
     return redirect(f"/dashboard/contrato")
 
+
 @requer_autenticacao
 def dash_aprovar_contrato(request, user, crianca):
     ch = Children.objects.filter(nome=crianca).first()
@@ -235,16 +259,113 @@ def dash_aprovar_contrato(request, user, crianca):
 
 # Empresa
 
+
 @requer_autenticacao
-def empresa(request,user):
+def empresa(request, user):
     context = {
         'user': user,
     }
     return render(request, "home/empresa.html", context)
 
+
 @requer_autenticacao
-def empresa_info(request,user):
+def empresa_info(request, user):
     context = {
         'user': user,
     }
     return render(request, "home/empresa-info.html", context)
+
+
+@requer_autenticacao
+def diaadiadogotas(request, user):
+    context = {
+        'user': user,
+    }
+    return render(request, "home/diaadiadogotas.html", context)
+
+
+@requer_autenticacao
+def iniciativasdogotas(request, user):
+    context = {
+        'user': user,
+    }
+    return render(request, "home/iniciativasdogotas.html", context)
+
+
+@requer_autenticacao
+def configuracoes(request, user):
+
+    if request.method == "POST":
+        email = request.POST.get("email")
+        senha = request.POST.get("telefone")
+        username = request.POST.get("nome")
+        telefone = request.POST.get("telefone")
+        
+        user.usuario.username = username
+        user.usuario.save()
+        user.usuario.email = email
+        user.usuario.save()
+        user.telefone = telefone
+        user.save()
+
+        #Perfil.objects.get(cpf=user["cpf"])
+        return redirect('/dashboard/configuracoes')
+    
+    context = {
+        'user': user,
+    }
+    
+    print()
+
+    return render(request, "dashboard/configuracoes.html", context)
+
+
+@requer_autenticacao
+def dashcontas(request, user):
+    if request.method == "POST":
+        valor = request.POST.get("valor")
+        descricao = request.POST.get("descricao")
+
+        Valor.objects.create(valor=valor, desc=descricao)
+
+        return redirect('/dashboard/dashcontas')
+    
+    context = {
+        'user': user,
+        'contas': Valor.objects.all()
+    }
+
+    return render(request, "dashboard/dashcontas.html", context)
+
+@requer_autenticacao
+def criancas(request, user):
+    criancas = Children.objects.all()
+
+    context = {
+        'user': user,
+        'criancas': criancas    
+    }
+    
+    return render(request, "dashboard/criancas.html", context)
+
+@requer_autenticacao
+def usuarios(request, user):
+    usuarios = Perfil.objects.all()
+
+    context = {
+        'user': user,
+        'usuarios': usuarios
+    }
+    
+    return render(request, "dashboard/usuarios.html", context)
+
+@requer_autenticacao
+def add_admin(request, user, usuario):
+
+
+    usr = User.objects.filter(username=usuario).first()
+
+    usr.is_staff = True
+    usr.save()
+
+    return redirect(f"/dashboard/user/{usuario}")
