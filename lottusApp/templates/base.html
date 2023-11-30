@@ -87,7 +87,7 @@
 						</ul>
 					</div>
 					<div class="flex space-x-5">
-						{% if not user %}
+						{% if not user and user == AnonymousUser %}
 						<a
 							href="/login"
 							class="btn btn-outline-dark active"
@@ -110,7 +110,7 @@
 						  </a>
 						  <ul class="dropdown-menu dropdown-menu-end">
 							  <li><a class="dropdown-item" href="/dashboard">Meu painel</a></li>
-							<li><a class="dropdown-item" href="#">Configurações</a></li>
+							<li><a class="dropdown-item" href="/dashboard/configuracoes">Configurações</a></li>
 							<li><a class="dropdown-item" href="/logout">Sair</a></li>
 						  </ul>
 						</div>

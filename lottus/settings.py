@@ -78,17 +78,28 @@ WSGI_APPLICATION = 'lottus.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'postgredb_m17p',
-        'USER': 'admindb',
-        'PASSWORD': 'w0m606aLTGX4K2WaIefibLGxdylRXZGX',
-        'HOST': 'dpg-cl7t5d76e7vc73a0nkjg-a.ohio-postgres.render.com', 
-        'PORT': '5432',
-        'SSL': True
+if DEBUG:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / "test_db.sqlite3",
+        }
     }
-}
+
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': 'postgredb_m17p',
+            'USER': 'admindb',
+            'PASSWORD': 'w0m606aLTGX4K2WaIefibLGxdylRXZGX',
+            'HOST': 'dpg-cl7t5d76e7vc73a0nkjg-a.ohio-postgres.render.com', 
+            'PORT': '5432',
+            'SSL': True
+        }
+    }
+
+
 
 
 # Password validation
