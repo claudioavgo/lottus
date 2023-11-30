@@ -1,0 +1,288 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Cultive</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+		<!-- Tailwind CSS CDN Links -->
+		<link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet" />
+	</head>
+	<body class="transition duration-300 ease-out">
+		<div class="flex border border-b h-24 justify-left align-center px-32" >
+			<a href="/"
+				><img
+					class="w-32"
+					src="{% static 'gota-navbar.png' %}"
+					alt="Logo"
+			/></a>
+			<div
+				class="navbar navbar-expand-lg bg-body-tertiary w-full">
+				<div class="collapse navbar-collapse w-full" id="navbarSupportedContent">
+					<div class="d-flex  w-full">
+						<ul class="navbar-nav mb-2 mb-lg-0">
+							<li class="nav-item">
+								<a class="nav-link" href="/apadrinhe">Apadrinhe uma criança</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="/doar">Doe agora</a>
+							</li>
+							<li class="nav-item dropdown">
+								<a
+									class="nav-link dropdown-toggle"
+									href="#"
+									role="button"
+									data-bs-toggle="dropdown"
+									aria-expanded="false">
+									Empresas
+								</a>
+								<ul class="dropdown-menu">
+									<li>
+										<a
+											class="dropdown-item"
+											href="/empresa-info"
+											>Informações</a
+										>
+									</li>
+									<li>
+										<a class="dropdown-item" href="/empresa"
+											>Cadastrar sua empresa</a
+										>
+									</li>
+								</ul>
+							</li>
+							<li class="nav-item dropdown">
+								<a
+									class="nav-link dropdown-toggle"
+									href="#"
+									role="button"
+									data-bs-toggle="dropdown"
+									aria-expanded="false">
+									Mais informações
+								</a>
+								<ul class="dropdown-menu">
+									<li>
+										<a
+											class="dropdown-item"
+											target="_blank"
+											href="https://github.com/claudioavgo/lottus"
+											>Nosso GitHub</a
+										>
+									</li>
+									<li>
+										<a
+											class="dropdown-item"
+											target="_blank"
+											href="https://sites.google.com/cesar.school/lottus/in%C3%ADcio"
+											>O projeto</a
+										>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+					<div class="flex space-x-5">
+						{% if not user and user == AnonymousUser %}
+						<a
+							href="/login"
+							class="btn btn-outline-dark active"
+							style="border-radius: 15px; background: {% block cor_login %}{% endblock cor_login %}"
+							>Login</a
+						>
+						<a
+							href="/cadastro"
+							class="btn btn-outline-dark active"
+							aria-current="page"
+							style="border-radius: 15px; background: {% block cor_cadastro %}{% endblock cor_cadastro %}"
+							>Cadastro</a
+						>
+						{% else %}
+						<div class="dropdown w-fit h-fit">
+						  <a class="no-underline" href="#" data-bs-toggle="dropdown" aria-expanded="false">
+							<div class="h-10 w-10 p-3 rounded-full bg-black flex justify-center items-center text-white">
+								<span class="no-underline">{{ user.usuario.username.0.upper }}</span>
+							</div>
+						  </a>
+						  <ul class="dropdown-menu dropdown-menu-end">
+							  <li><a class="dropdown-item" href="/dashboard">Meu painel</a></li>
+							<li><a class="dropdown-item" href="/dashboard/configuracoes">Configurações</a></li>
+							<li><a class="dropdown-item" href="/logout">Sair</a></li>
+						  </ul>
+						</div>
+						{% endif %}
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="flex transition duration-300 ease-out">
+			<div class="flex h-screen flex-col justify-between border-e w-52 transition duration-300 ease-out mr-12 border-r">
+				<div class="px-4 py-6">
+					<a href="/"
+					><img
+						class="w-32"
+						src="{% static 'gota-navbar.png' %}"
+						alt="Logo"
+				/></a>
+			
+				<ul class="mt-6 space-y-1">
+					<li>
+					<a
+						href="/dashboard"
+						class="block rounded-lg bg-gray-100 px-4 py-2 text-sm font-medium text-gray-700"
+					>
+						Início
+					</a>
+					</li>
+					
+			
+					<li>
+					{% if user.usuario.is_staff %}	
+						<details class="group [&_summary::-webkit-details-marker]:hidden transition duration-300 ease-out">
+							
+							<summary
+							class="flex cursor-pointer items-center justify-between rounded-lg px-4 py-2 text-gray-500 hover:bg-gray-100 hover:text-gray-700"
+							>
+							<span class="text-sm font-medium"> Crianças </span>
+				
+							<span
+								class="shrink-0 transition duration-300 group-open:-rotate-180"
+							>
+								<svg
+								xmlns="http://www.w3.org/2000/svg"
+								class="h-5 w-5"
+								viewBox="0 0 20 20"
+								fill="currentColor"
+								>
+								<path
+									fill-rule="evenodd"
+									d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+									clip-rule="evenodd"
+								/>
+								</svg>
+							</span>
+							</summary>
+				
+							<ul class="mt-2 space-y-1  px-4">
+							<li>
+								<a
+								href="/dashboard/criancas"
+								class="block rounded-lg px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-700"
+								>
+								Crianças cadastradas
+								</a>
+							</li>
+				
+							<li>
+								<a
+								href="/dashboard/adicionar/crianca"
+								class="block rounded-lg px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-700"
+								>
+								Adicionar criança
+								</a>
+							</li>
+							</ul>
+						</details>
+					
+					</li>
+			
+					<li>
+					<a
+						href="/dashboard/dashcontas"
+						class="block rounded-lg px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-700"
+					>
+						Prestação de contas
+					</a>
+					</li>
+			
+					<li>
+					<a
+						href="/dashboard/usuarios"
+						class="block rounded-lg px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-700"
+					>
+						Usuários cadastrados
+					</a>
+					</li>
+					{% else %}
+
+					<li>
+						<a
+							href="/dashboard/contrato"
+							class="block rounded-lg px-4 py-2 text-sm font-medium text-gray-700"
+						>
+							Contrato
+						</a>
+					</li>
+					<li>
+						<a
+							href="/dashboard/crianca/{{ user.crianca }}"
+							class="block rounded-lg px-4 py-2 text-sm font-medium text-gray-700"
+						>
+							Criança apadrinhada
+						</a>
+					</li>
+					
+					{% endif %}
+			
+					<li>
+					<details class="group [&_summary::-webkit-details-marker]:hidden">
+						<summary
+						class="flex cursor-pointer items-center justify-between rounded-lg px-4 py-2 text-gray-500 hover:bg-gray-100 hover:text-gray-700"
+						>
+						<span class="text-sm font-medium"> Conta </span>
+			
+						<span
+							class="shrink-0 transition duration-300 group-open:-rotate-180"
+						>
+							<svg
+							xmlns="http://www.w3.org/2000/svg"
+							class="h-5 w-5"
+							viewBox="0 0 20 20"
+							fill="currentColor"
+							>
+							<path
+								fill-rule="evenodd"
+								d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+								clip-rule="evenodd"
+							/>
+							</svg>
+						</span>
+						</summary>
+			
+						<ul class="mt-2 space-y-1 px-4">
+						<li>
+							<a
+							href="/dashboard/configuracoes"
+							class="block rounded-lg px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-700"
+							>
+							Configurações
+							</a>
+						</li>
+						<li>
+							<a
+							href="/logout"
+							class="block rounded-lg px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-700"
+							>
+							Sair da conta
+							</a>
+						</li>
+						</ul>
+					</details>
+					</li>
+				</ul>
+				</div>
+			</div>
+
+			<div class="overflow-y-auto max-h-screen w-full px-5">
+				{% block content %} {% endblock content %}
+			</div>
+		</div>
+	</body>
+</html>
+<script src="https://cdn.jsdelivr.net/npm/fastbootstrap@1.1.2/dist/js/fastbootstrap.min.js"
+  integrity="sha256-+c+/OCMmtlZadi89VaV1yUOkk1T4BD2pwBFpY3OcrqI=" crossorigin="anonymous"></script>

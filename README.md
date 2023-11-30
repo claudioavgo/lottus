@@ -49,7 +49,7 @@ Instale as dependencias usando "pip install -r ./requirements.txt"
 <p><a href="https://github.com/">Gabriel Ferraz</a> - gff@cesar.school 📩</p>
 <p><a href="https://github.com/">Brandon Hunt</a> - boh@cesar.school 📩</p>
 
-
+# SR1
 ## Histórias SR1
 <p>Histórias criadas:</p>
 <p>
@@ -74,3 +74,15 @@ Instale as dependencias usando "pip install -r ./requirements.txt"
 
 ## Relato de programção em par SR1
 <p>Para desenvolvermos a aplicação web, utilizamos programação em par que foi essencial para o andamento do projeto. O grupo se subdividiu em 3 duplas, que foram elas: Cláudio Alves e Guilherme Cardozo, Laura Vidal e Gabriel Lima, Gabriel Ferraz e Brandon Hunt. A partir disso, cada dupla ficou focada em resolver certa parte do site, como por exemplo, a dupla Cláudio Alves e Guilherme Cardozo, ficou responsável pelo Login e pelo Cadastro, juntamente com a home. Foi um consenso geral que a programação em par ajudou demais o andamento do grupo e o crescimento intelectual dos integrantes, em desenvolvimento web e no trabalho em equipe, uma vez que, trabalhando em duplas, reduziu-se o números de bugs e issues e houve um aprendizado em conjunto.</p>
+
+# SR2
+## Screencast protótipo de baixa fidelidade SR2
+<a href="https://youtu.be/C1B7ju19plU">
+  <img src="https://i.ibb.co/RTfw26X/Captura-de-tela-2023-10-16-233923.jpg"/>
+</a> 
+
+## Relato de programação em par SR2
+Para continuar o desenvolvimento da aplicação web nós utilizamos a extensão Live Share, que permite a colaboração em tempo real no Visual Studio Code. O grupo fez diversas sessões de programação em pares e, elas foram organizadas em rodízios, ou seja, cada membro formou par com cada participante do grupo. O uso da programação em pares foi fundamental para o desenvolvimento da nossa aplicação e, também, trouxe mais agilidade, criatividade e assertividade para o nosso projeto. 
+
+## Diagrama de atividades SR2
+![Diagrama de Atividades](https://github.com/claudioavgo/lottus/assets/132563707/5616fecd-483c-4643-8c46-11ddaeb0d8e8)

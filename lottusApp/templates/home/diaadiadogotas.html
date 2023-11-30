@@ -1,0 +1,95 @@
+{% extends 'base.html' %} 
+{% load static %} 
+{% block cor_login %}#29226c{%endblock cor_login %} 
+{% block cor_cadastro %}#3d348b{% endblock cor_cadastro %}
+{% block content %}
+
+<section class="bg-gray-50">
+    <div class="mx-auto max-w-screen-2xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
+        <div
+            class="ml-auto absolute z-0"
+            style="width: 520px; height: 490px; opacity: 15%; right: 15rem;">
+        <img src="{% static './images/flor-coracao.png' %}" class="d-block w-100" alt="..." />
+
+        </div>
+      <div class="md:flex md:items-end md:justify-between">
+
+        <div class="max-w-xl">
+          <h2 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl">
+            Dia a dia no Gotas
+          </h2>
+  
+          <p class="mt-6 max-w-lg leading-relaxed text-gray-700">
+            Desenvolvemos as atividades focadas no desenvolvimento integral do ser humano, 
+            atuando no físico, mental, social e espiritual
+          </p>
+          
+            <a
+            class="mt-8 group relative inline-block text-sm font-medium text-red-600 focus:outline-none focus:ring active:text-red-500"
+            href="https://gotasdeflor.org.br/quem-somos/atividades/"
+            >
+            <span class="absolute inset-0 border border-current"></span>
+            <span
+                class="block border border-current bg-white px-12 py-3 transition-transform group-hover:-translate-x-1 group-hover:-translate-y-1"
+            >
+                Dia a dia no gotas
+            </span>
+            </a>
+        </div>
+      </div>
+  
+      <div class="mt-12 grid grid-cols-1 gap-4 md:grid-cols-3 pr-24 ">
+        <blockquote
+          class="flex h-full flex-col justify-between bg-white p-6 shadow-xl sm:p-6 pr-5 "
+        >
+          <div>
+            <div class="mt-4">
+              <p class="text-2xl font-bold text-rose-600 sm:text-3xl">
+                Acolhimento
+              </p>
+  
+              <p class="mt-4 leading-relaxed text-gray-700">
+                As crianças chegam, recebem uma refeição balanceada e participam de uma roda de conversa inicial para saber sobre a proposta para o dia
+              </p>
+            </div>
+          </div>
+
+        </blockquote>
+  
+        <blockquote
+          class="flex h-full flex-col justify-between bg-white p-6 shadow-xl sm:p-6"
+        >
+          <div>
+            <div class="mt-4">
+              <p class="text-2xl font-bold text-rose-600 sm:text-3xl">
+                Floral e Atividades
+              </p>
+  
+              <p class="mt-4 leading-relaxed text-gray-700">
+                Os que desejam tomam os florais e todos seguem para as atividades
+              </p>
+            </div>
+          </div>
+  
+        </blockquote>
+  
+        <blockquote
+          class="flex h-full flex-col justify-between bg-white p-6 shadow-xl sm:p-6"
+        >
+          <div>
+  
+            <div class="mt-4">
+              <p class="text-2xl font-bold text-rose-600 sm:text-3xl">
+                Dispersão
+              </p>
+  
+              <p class="mt-4 leading-relaxed text-gray-700">
+                Ao final se reúnem novamente em roda, avaliam como foi o dia e seguem para mais uma refeição pensada com muito carinho e atenção
+              </p>
+            </div>
+          </div>
+        </blockquote>
+      </div>
+    </div>
+  </section>
+{% endblock %}

@@ -5,52 +5,56 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Cultive</title>
-		<link
-			href="https://cdn.jsdelivr.net/npm/fastbootstrap@1.1.2/dist/css/fastbootstrap.min.css"
-			rel="stylesheet"
-			integrity="sha256-xLGBU65wCDv2/qEdq3ZYw2Qdiia/wxxeGepRyZmpQdY="
-			crossorigin="anonymous" />
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+		<!-- Tailwind CSS CDN Links -->
+		<link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet" />
 	</head>
 	<body>
-		<div class="container-fluid" style="display: flex; align-items: center">
+		<div class="flex border border-b h-24 justify-left align-center px-32" >
 			<a href="/"
 				><img
-					class="gota-navbar"
-					style="
-						width: 173px;
-						height: 42;
-						flex-shrink: 0;
-						margin-right: 10px;
-						margin-left: 5%;
-					"
+					class="w-32"
 					src="{% static 'gota-navbar.png' %}"
 					alt="Logo"
 			/></a>
-			<nav
-				class="navbar navbar-expand-lg bg-body-tertiary"
-				style="margin-right: 5%; border-bottom: 1.5px solid black; width: 100%">
-				<button
-					class="navbar-toggler"
-					type="button"
-					data-bs-toggle="collapse"
-					data-bs-target="#navbarSupportedContent"
-					aria-controls="navbarSupportedContent"
-					aria-expanded="false"
-					aria-label="Toggle navigation">
-					<span class="navbar-toggler-icon"></span>
-				</button>
-
-				<div class="collapse navbar-collapse" id="navbarSupportedContent">
-					<div class="d-flex align-items-center">
-						<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+			<div
+				class="navbar navbar-expand-lg bg-body-tertiary w-full">
+				<div class="collapse navbar-collapse w-full" id="navbarSupportedContent">
+					<div class="d-flex  w-full">
+						<ul class="navbar-nav mb-2 mb-lg-0">
 							<li class="nav-item">
 								<a class="nav-link" href="/apadrinhe">Apadrinhe uma criança</a>
 							</li>
 							<li class="nav-item">
 								<a class="nav-link" href="/doar">Doe agora</a>
 							</li>
-							<li class="nav-item">
-								<a class="nav-link" href="/empresa">Cadastre sua empresa</a>
+							<li class="nav-item dropdown">
+								<a
+									class="nav-link dropdown-toggle"
+									href="#"
+									role="button"
+									data-bs-toggle="dropdown"
+									aria-expanded="false">
+									Empresas
+								</a>
+								<ul class="dropdown-menu">
+									<li>
+										<a
+											class="dropdown-item"
+											href="/empresa-info"
+											>Informações</a
+										>
+									</li>
+									<li>
+										<a class="dropdown-item" href="/empresa"
+											>Cadastrar sua empresa</a
+										>
+									</li>
+								</ul>
 							</li>
 							<li class="nav-item dropdown">
 								<a
@@ -82,14 +86,14 @@
 							</li>
 						</ul>
 					</div>
-					<div class="ms-auto">
+					<div class="flex space-x-5">
+						{% if not user and user == AnonymousUser %}
 						<a
 							href="/login"
 							class="btn btn-outline-dark active"
 							style="border-radius: 15px; background: {% block cor_login %}{% endblock cor_login %}"
 							>Login</a
 						>
-
 						<a
 							href="/cadastro"
 							class="btn btn-outline-dark active"
@@ -97,9 +101,23 @@
 							style="border-radius: 15px; background: {% block cor_cadastro %}{% endblock cor_cadastro %}"
 							>Cadastro</a
 						>
+						{% else %}
+						<div class="dropdown w-fit h-fit">
+						  <a class="no-underline" href="#" data-bs-toggle="dropdown" aria-expanded="false">
+							<div class="h-10 w-10 p-3 rounded-full bg-black flex justify-center items-center text-white">
+								<span class="no-underline">{{ user.usuario.username.0.upper }}</span>
+							</div>
+						  </a>
+						  <ul class="dropdown-menu dropdown-menu-end">
+							  <li><a class="dropdown-item" href="/dashboard">Meu painel</a></li>
+							<li><a class="dropdown-item" href="/dashboard/configuracoes">Configurações</a></li>
+							<li><a class="dropdown-item" href="/logout">Sair</a></li>
+						  </ul>
+						</div>
+						{% endif %}
 					</div>
 				</div>
-			</nav>
+			</div>
 		</div>
 
 		{% block content %} {% endblock content %}
@@ -178,8 +196,6 @@
 			z-index: 1000;
 		}
 	</style>
-	<script
-		src="https://cdn.jsdelivr.net/npm/fastbootstrap@1.1.2/dist/js/fastbootstrap.min.js"
-		integrity="sha256-+c+/OCMmtlZadi89VaV1yUOkk1T4BD2pwBFpY3OcrqI="
-		crossorigin="anonymous"></script>
 </html>
+<script src="https://cdn.jsdelivr.net/npm/fastbootstrap@1.1.2/dist/js/fastbootstrap.min.js"
+  integrity="sha256-+c+/OCMmtlZadi89VaV1yUOkk1T4BD2pwBFpY3OcrqI=" crossorigin="anonymous"></script>

@@ -1,0 +1,44 @@
+{% extends 'base-dash.html' %}
+{% load static %}
+{% block cor_login %}#3d348b{% endblock cor_login %}
+{% block cor_cadastro %}#3d348b{% endblock cor_cadastro %}
+{% block content %}
+<div class="overflow-x-auto ml-2 mt-12">
+    <table class="min-w-full divide-y-2 divide-gray-200 bg-white text-sm">
+    <thead class="ltr:text-left rtl:text-right">
+        <tr>
+        <th class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
+            Nome da usuário
+        </th>
+        <th class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
+            Email
+        </th>
+        <th class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
+            Status
+        </th>
+        <th class="px-4 py-2"></th>
+        </tr>
+    </thead>
+
+    <tbody class="divide-y divide-gray-200">
+        {% for i in usuarios %}
+            <tr>
+                <td class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
+                    {{ i.usuario.username }}
+                </td>
+                <td class="whitespace-nowrap px-4 py-2 text-gray-700">{{ i.usuario.email }}</td>
+                <td class="whitespace-nowrap px-4 py-2 text-gray-700">{% if i.crianca and i.crianca_autorizada %}Padrinho{% else %}{% if i.crianca and not i.crianca_autorizada%}Aguardando liberação do contrato{% else %}Não é padrinho{% endif %}{% endif %}</td>
+                <td class="whitespace-nowrap px-4 py-2">
+                    <a
+                    href="/dashboard/user/{{ i.usuario.username }}"
+                    class="inline-block rounded bg-indigo-600 px-4 py-2 text-xs font-medium text-white hover:bg-indigo-700"
+                    >
+                    Ver mais
+                    </a>
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+    </table>
+</div>
+{% endblock %}

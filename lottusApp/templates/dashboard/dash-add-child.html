@@ -1,216 +1,59 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Cultive</title>
-        <link href="https://cdn.jsdelivr.net/npm/fastbootstrap@1.1.2/dist/css/fastbootstrap.min.css" rel="stylesheet"
-            integrity="sha256-xLGBU65wCDv2/qEdq3ZYw2Qdiia/wxxeGepRyZmpQdY=" crossorigin="anonymous">
-    </head>
-    <body>
-        <nav class="navbar navbar-expand-lg bg-body-tertiary" style="position: fixed; width: 100%; z-index: 2;background-color: white;">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="/">Cultive</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                    aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="/">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/doar">Faça sua doação</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/apadrinhe">Apadrinhe uma criança</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/empresa">Cadastre sua empresa</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                                aria-expanded="false">
-                                Mais informações
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" target="_blank"
-                                        href="https://github.com/claudioavgo/lottus">Nosso GitHub</a></li>
-                                <li><a class="dropdown-item" target="_blank"
-                                        href="https://sites.google.com/cesar.school/lottus/in%C3%ADcio">O projeto</a></li>
-                            </ul>
-                            <li class="nav-item">
-                                <a class="nav-link active" href="/dashboard">Dashboard</a>
-                            </li>
-                        </li>
-                    </ul>
-                    <div>
-                        {% if not user %}
-                        <a href="/login" class="btn btn-outline-dark">Login</a>
-                        <a href="/cadastro" class="btn btn-outline-dark">Cadastre-se</a>
-                        {% else %}
-                        <li class="nav-item dropdown">
-                          <a class="avatar" href="#" data-bs-toggle="dropdown" aria-expanded="false">
-                            <span class="avatar text-bg-secondary">{{ user.usuario.username.0 }}</span>
-                          </a>
-                          <ul class="dropdown-menu dropdown-menu-end">
-                            <li><a class="dropdown-item" href="#">Configurações</a></li>
-                            <li><a class="dropdown-item" href="#">Perfil</a></li>
-                            <li><a class="dropdown-item" href="/logout">Sair</a></li>
-                          </ul>
-                        </li>
-                        {% endif %}
-                      </div>
-                </div>
-            </div>
-        </nav>
-        <div class="layout" style="position: fixed">
-            <div class="layout-sidebar">
-                <div class="sidenav show border-end" style="height: 92%; top: 3.5rem;z-index: 1;">
-                    <div class="sidenav-body">
-                        <div class="menu accordion">
-                            <ul class="menu-list">
-                                <li>
-                                    <a class="menu-item active" href="/dashboard">Página Principal</a>
-                                </li>
-                                <li>
-                                    <a class="menu-item" href="/dashboard/doacoes">Minhas doações</a>
-                                </li>
-                                <li>
-                                    {% if user.crianca and user.crianca_autorizada and not user.usuario.is_staff %}
-    
-                                        <div class="menu-item">
-                                            <button class="accordion-button p-0 bg-transparent text-reset" type="button"
-                                                data-bs-toggle="collapse" aria-expanded="true"
-                                                data-bs-target="#submenu-1">Criança</button>
-                                        </div>
-                                        <div class="accordion-collapse collapse show" id="submenu-1">
-                                            <ul class="menu-list">
-                                                
-                                                <li>
-                                                    <a class="menu-item" href="/dashboard/crianca">{{ user.crianca.nome }} {{user.crianca.sobrenome}}</a>
-                                                </li>
-                                                
-                                            </ul>
-                                        </div>
-    
-                                    {% else %}
-    
-                                        <div class="menu-item">
-                                            <button class="accordion-button p-0 bg-transparent text-reset" type="button"
-                                                data-bs-toggle="collapse" aria-expanded="true"
-                                                data-bs-target="#submenu-1">Crianças</button>
-                                        </div>
-                                        <div class="accordion-collapse collapse show" id="submenu-1">
-                                            <ul class="menu-list">
-                                                {% for i in more.criancas %}
-                                                <li>
-                                                    <a class="menu-item" href="/dashboard/crianca/{{i.nome}}">{{ i.nome }} {{ i.sobrenome }}</a>
-                                                </li>
-                                                {% endfor %}
-                                                <li>
-                                                    <a style="background-color: rgb(0, 101, 255);font-weight: 500;color: white;" class="menu-item" href="/dashboard/adicionar/crianca">Adicionar</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-    
-                                        <div class="menu-item">
-                                            <button class="accordion-button p-0 bg-transparent text-reset" type="button"
-                                                data-bs-toggle="collapse" aria-expanded="true"
-                                                data-bs-target="#submenu-5">Usuários</button>
-                                        </div>
-                                        <div class="accordion-collapse collapse show" id="submenu-5">
-                                            <ul class="menu-list">
-                                                {% for i in more.usuarios %}
-                                                <li>
-                                                    <a class="menu-item" href="/dashboard/user/{{ i.usuario.username }}">{{ i.usuario.username }}</a>
-                                                </li>
-                                                {% endfor %}
-                                            </ul>
-                                        </div>
-                                    {% endif %}
-                                </li>
-                                {% if user.crianca %}
-                                <li>
-                                    <div class="menu-item ">
-                                        <button class="accordion-button p-0 bg-transparent text-reset" type="button"
-                                            data-bs-toggle="collapse" aria-expanded="true"
-                                            data-bs-target="#submenu-2">Legal</button>
-                                    </div>
-                                    <div class="accordion-collapse collapse show" id="submenu-2">
-                                        <ul class="menu-list">
-                                            <li>
-                                                <a class="menu-item " href="/dashboard/contrato">Ver contrato</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </li>
-                                {% endif %}
-                            </ul>
+{% extends 'base-dash.html' %}
+{% load static %}
+{% block content %}
+<div class="spca ml-2 mt-12 ">
+    <form class="space-y-12" action="/dashboard/adicionar/crianca" method="post">
+        {% csrf_token %}
+        <div class="border-b border-gray-900/10 pb-12">
+            <h2 class="text-base font-semibold leading-7 text-gray-900">Registro de Crianças</h2>
+            <p class="mt-1 text-sm leading-6 text-gray-600">Insira informações sobre as crianças.</p>
+            <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+                <div class="sm:col-span-2">
+                    <label for="nome" class="block text-sm font-medium leading-6 text-gray-900">Nome</label>
+                    <div class="mt-2">
+                        <div class="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
+                            <input type="text" name="nome" id="nome" autocomplete="off" class="p-2 pl-1 block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" placeholder="Nome">
                         </div>
                     </div>
-                    <div class="sidenav-footer text-center">
-                        <a class="btn btn-subtle" href="#">Sair <i class="fa-solid fa-right-from-bracket ms-3"></i></a>
+                </div>
+                <div class="sm:col-span-4">
+                    <label for="sobrenome" class="block text-sm font-medium leading-6 text-gray-900">Sobrenome</label>
+                    <div class="mt-2">
+                        <div class="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
+                            <input type="text" name="sobrenome" id="sobrenome" autocomplete="off" class="p-2 pl-1 block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" placeholder="Sobrenome">
+                        </div>
+                    </div>
+                </div>
+                <div class="sm:col-span-2 ">
+                    <label for="local" class="block text-sm font-medium leading-6 text-gray-900">Local</label>
+                    <div class="mt-2">
+                        <div class="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
+                            <input type="text" name="local" id="local" autocomplete="off" class="p-2 pl-1 block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" placeholder="Local">
+                        </div>
+                    </div>
+                </div>
+                <div class="sm:col-span-1 ">
+                    <label for="idade" class="block text-sm font-medium leading-6 text-gray-900">Idade</label>
+                    <div class="mt-2">
+                        <div class="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
+                            <input type="number"  min="-1" max="18" name="idade" id="idade" autocomplete="off" class="p-2 pl-1 block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" placeholder="Idade">
+                        </div>
+                    </div>
+                </div>
+                <div class="sm:col-span-1 ">
+                    <label for="ano_nascimento" class="block text-sm font-medium leading-6 text-gray-900">Ano de Nascimento</label>
+                    <div class="mt-2">
+                        <div class="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
+                            <input type="date" name="data" id="ano_nascimento" autocomplete="off" class="p-2 pl-1 block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" placeholder="DD/MM/AAAA">
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="container" style="margin-bottom: 3rem;">
-            <div class="row">
-                <div class="col-xs-12 col-sm-6 col-md-6" style="margin-top: 6rem; margin-left: 15rem;">
-                    <form action="/dashboard/adicionar/crianca" method="post">
-                        {% csrf_token %}
-                        <div class="row mb-3">
-                          <label for="inputEmail3" class="col-sm-2 col-form-label">Nome</label>
-                          <div class="col-sm-10">
-                            <input name="nome" type="text" class="form-control" id="inputEmail3">
-                          </div>
-                        </div>
-                        <div class="row mb-3">
-                          <label for="inputPassword3" class="col-sm-2 col-form-label">Sobrenome</label>
-                          <div class="col-sm-10">
-                            <input name="sobrenome" type="text" class="form-control" id="inputPassword3">
-                          </div>
-                        </div>
-                        <div class="row mb-3">
-                          <label for="inputPassword3" class="col-sm-2 col-form-label">Local</label>
-                          <div class="col-sm-10">
-                            <input name="local" type="text" class="form-control" id="inputPassword3">
-                          </div>
-                        </div>
-                        <div class="row mb-3">
-                          <label for="inputPassword3" class="col-sm-2 col-form-label">Idade</label>
-                          <div class="col-sm-10">
-                            <input name="idade" type="number" class="form-control" id="inputPassword3">
-                          </div>
-                        </div>
-                        <div class="row mb-3">
-                          <label for="inputPassword3" class="col-sm-2 col-form-label">Ano de nascimento</label>
-                          <div class="col-sm-10">
-                            <input name="data" type="date" class="form-control" id="inputPassword3">
-                          </div>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Adicionar</button>
-                      </form>
-                </div>
+            <div class="mt-6 flex items-center justify-start gap-x-6">
+                <button type="button" class="text-sm font-semibold leading-6 text-gray-900">Cancelar</button>
+                <button type="submit" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-semibold leading-6 text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition ease-in-out duration-150 rounded-md">Registrar</button>
             </div>
         </div>
-    </body>
-    <style>
-        .gray-rectangle {
-        background-color: rgba(204, 204, 204, 0.7); 
-        padding: 20px; 
-        border-radius: 10px; 
-        }
-        .gray-rectangle-activity {
-        height: 200px; 
-        background-color: rgba(204, 204, 204, 0.7);
-        padding: 20px;
-        border-radius: 10px; 
-        }
-    </style>
-    </style>
-    <script src="https://cdn.jsdelivr.net/npm/fastbootstrap@1.1.2/dist/js/fastbootstrap.min.js" integrity="sha256-+c+/OCMmtlZadi89VaV1yUOkk1T4BD2pwBFpY3OcrqI=" crossorigin="anonymous"></script>
-</html>
+    </form>
+</div>
+{% endblock %}

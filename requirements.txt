@@ -2,3 +2,4 @@ Django
 requests
 whitenoise
 psycopg2
+selenium
