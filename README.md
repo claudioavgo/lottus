@@ -77,12 +77,12 @@ Instale as dependencias usando "pip install -r ./requirements.txt"
 
 # SR2
 ## Screencast aplicação
-<a href="https://youtu.be/C1B7ju19plU">
+<a href="https://youtu.be/3kX8QkQcLEI">
   <img src="https://i.ibb.co/RTfw26X/Captura-de-tela-2023-10-16-233923.jpg"/>
 </a>
 
 ## Screencast CI/CD
-<a href="https://youtu.be/C1B7ju19plU">
+<a href="https://youtu.be/QGU4ptehA8g">
   <img src="https://i.ibb.co/RTfw26X/Captura-de-tela-2023-10-16-233923.jpg"/>
 </a> 
 
