@@ -76,6 +76,16 @@ Instale as dependencias usando "pip install -r ./requirements.txt"
 <p>Para desenvolvermos a aplicação web, utilizamos programação em par que foi essencial para o andamento do projeto. O grupo se subdividiu em 3 duplas, que foram elas: Cláudio Alves e Guilherme Cardozo, Laura Vidal e Gabriel Lima, Gabriel Ferraz e Brandon Hunt. A partir disso, cada dupla ficou focada em resolver certa parte do site, como por exemplo, a dupla Cláudio Alves e Guilherme Cardozo, ficou responsável pelo Login e pelo Cadastro, juntamente com a home. Foi um consenso geral que a programação em par ajudou demais o andamento do grupo e o crescimento intelectual dos integrantes, em desenvolvimento web e no trabalho em equipe, uma vez que, trabalhando em duplas, reduziu-se o números de bugs e issues e houve um aprendizado em conjunto.</p>
 
 # SR2
+## Screencast aplicação
+<a href="https://youtu.be/C1B7ju19plU">
+  <img src="https://i.ibb.co/RTfw26X/Captura-de-tela-2023-10-16-233923.jpg"/>
+</a>
+
+## Screencast CI/CD
+<a href="https://youtu.be/C1B7ju19plU">
+  <img src="https://i.ibb.co/RTfw26X/Captura-de-tela-2023-10-16-233923.jpg"/>
+</a> 
+
 ## Screencast protótipo de baixa fidelidade SR2
 <a href="https://youtu.be/C1B7ju19plU">
   <img src="https://i.ibb.co/RTfw26X/Captura-de-tela-2023-10-16-233923.jpg"/>
@@ -91,3 +101,9 @@ Para continuar o desenvolvimento da aplicação web nós utilizamos a extensão 
 
 ## Diagrama de atividades SR2
 ![Diagrama de Atividades](https://github.com/claudioavgo/lottus/assets/132563707/5616fecd-483c-4643-8c46-11ddaeb0d8e8)
+
+## Issues e Bugs SR2
+![image](https://github.com/claudioavgo/lottus/assets/64589027/ae8b8449-1176-48c5-b28d-0aa10b02b057)
+![image](https://github.com/claudioavgo/lottus/assets/64589027/c13f58a4-bc6d-446d-bdce-0bedf6bee218)
+
+
