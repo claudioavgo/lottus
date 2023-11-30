@@ -66,4 +66,4 @@ jobs:
         with:
           app-name: 'lottus'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_16C5E23B7B214E10BFCBF690864EC2DC }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_C47F7548EA35444394646C43ED0E8884 }}
